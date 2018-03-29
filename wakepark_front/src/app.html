@@ -1,8 +1,8 @@
 <template>
     <div class="cd-bg-video-wrapper" style="background: url('../img/DSC04121-1.jpg') no-repeat; background-size: cover;">
-      <!-- video element will be loaded using jQuery -->
     </div>
-    <div class="cd-hero">
+
+    < class="cd-hero">
 
       <!-- Navigation -->
       <div class="cd-slider-nav">
@@ -12,7 +12,7 @@
         <div class="container">
           <nav class="navbar">
             <div class="tm-navbar-bg">
-              <a class="navbar-brand text-uppercase" href="#">MÄNNIKU WAKEPARK</a>
+              <a id="homepage" class="navbar-brand text-uppercase" href="#">MÄNNIKU WAKEPARK</a>
               <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#tmNavbar">
                 &#9776;
               </button>
@@ -22,7 +22,7 @@
                     <a class="nav-link" href="#0" data-no="1">Home <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#0" data-no="2">Info</a>
+                    <button class="nav-link" click.delegate=showInfo() data-no="2">Info</button>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#0" data-no="3">Kontakt</a>
@@ -41,7 +41,7 @@
 
         <!-- Page 1 Home -->
         <li class="selected">
-          <div class="cd-full-width">
+          <div  class="cd-full-width">
             <div class="container js-tm-page-content tm-page-1 tm-section-margin-t-small" data-page-no="1">
               <div class="row">
                 <div class="col-xs-12">
@@ -53,7 +53,7 @@
                       <div class="tm-home-description-container tm-bg-dark-blue">
                         <div class="queue">
                           <div class="column">blabla ${message}</div>
-                          <div class="column">blabla <p id="suva"></p><script>lihtsaltfn();</script></div>
+                          <div class="column">blabla <p id="suva"></p></div>
                           <div class="column">blabla</div>
                         </div>
                       </div>
@@ -67,6 +67,7 @@
         </li>
 
         <!-- Page 2 Info -->
+        <div id="infopage">
         <li>
           <div class="cd-full-width">
             <div class="container js-tm-page-content tm-section-margin-t" data-page-no="2">
@@ -110,54 +111,10 @@
                   </div>
                 </div>
               </div>
-
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="tm-flex">
-                    <div class="col-lg-4 tm-margin-b">
-                      <div class="tm-bg-brown tm-white-border tm-textbox-padding tm-height-100">
-                        <p class="tm-text">Aliquam facilisis ut purus non ultricies. Mauris a auctor turpis. Ut in consequat quam. Integer ex dui, eleifend non mi val, eleifend varius orci.</p>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 tm-margin-b">
-                      <div class="tm-bg-dark-blue tm-white-border tm-textbox-padding tm-height-100">
-                        <p class="tm-text">Mauris tempor, massa quis viverra suscipit, sapien ipsum condimentum nulla, sed faucibus tellus libero eget dolor. In ornare posuere.</p>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 tm-margin-b">
-                      <div class="tm-bg-dark-brown tm-white-border tm-textbox-padding tm-height-100">
-                        <p class="tm-text">Donec placerat eget enim vel fringilla. Vivamus nibh nisl, viverra vel nisl eget, feugiat fringilla quam. Naecenas sodales, magna sed.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="tm-flex">
-                    <div class="col-lg-4 tm-sm-margin-b">
-                      <div class="tm-bg-dark-blue tm-white-border tm-textbox-padding tm-height-100">
-                        <p class="tm-text">Quisque mattis pellentesque. Etiam rutrum neque at diam imperdiet, efficitur tincidunt turpis dignissim. Cras placerat placerat tempor.</p>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 tm-sm-margin-b">
-                      <div class="tm-bg-white tm-white-border tm-textbox-padding tm-height-100">
-                        <p class="tm-text">Sed nec mi fringilla metus vehicula porttitor. Donec sit amet arcu quis massa mollis condimentum tempor eleifend enim.</p>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 tm-sm-margin-b">
-                      <div class="tm-bg-dark-blue tm-white-border tm-textbox-padding tm-height-100">
-                        <p class="tm-text">In pellentesque, ipsum vitae dapibus ultrices, dui nunc fringilla enim, sit amet placerat nulla felis et nisl.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div> <!-- .cd-full-width -->
-
         </li>
+        </div>
 
         <!-- Page 3 Kontakt -->
         <li>

@@ -2,8 +2,11 @@ export class App {
   constructor() {
     this.message = 'Hello Dog hello!';
   }
-
-  lihtsaltfn() {
-    document.getElementById('suva').innerHTML = "Proov";
+  showInfo() {
+    var info = "pask";
+    document.getElementById("homepage").innerHTML = info;
   }
 }
+
+
+
