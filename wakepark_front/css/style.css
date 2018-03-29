@@ -1,0 +1,203 @@
+body {
+    background: url('../img/DSC04121-1.jpg') no-repeat;
+    background-size: cover;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	font-size: 17px;
+	font-weight: 400; 
+    margin: 0;
+    padding: 0;
+}
+
+ul.nav-bar {
+  background: rgb(26, 45, 75, 0.8);
+  margin: 0;
+  padding: 0;
+  height: 80px;
+}
+
+ul.nav-bar li {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  float: right;
+}
+
+ul.nav-bar a {
+  text-align: center;
+  height: 80px;
+  width: 140px;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+
+
+ul.nav-bar a.nav-button:hover {
+  background-color: #81e3fa;
+  height: 100px;
+  transition: 0.5s;
+}
+
+.heading {
+  text-align: center;
+  width: 500px;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+
+.queue-container{
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 0;
+  background-color: rgb(26, 45, 75, 0.9);
+  height: 300px;
+  width: 800px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(199, 239, 239);
+  display: block;
+}
+
+.tracks-container {
+  background: white;
+  margin: 0 auto;
+  text-align: center;
+  color: black;
+  width: 100px;
+  height: 100px;
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tracks {
+  width: 500px;
+}
+
+.track {
+  border-style: solid;
+  border-width: 2px;
+  height: 50px;
+  width: 100px;
+  float: left;
+  margin: 20px;
+  padding: 10px;
+}
+
+.login-banner {
+  text-align: center;
+  width: 500px;
+  height: 200px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.login-text {
+  color: white;
+  font-size: 35px;
+  font-weight: 200;
+}
+
+.login-container {
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 0;
+  background-color: rgb(26, 45, 75, 0.9);
+  height: 220px;
+  width: 350px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(199, 239, 239);
+}
+
+.login-form {
+  text-align: center;
+  transition: 0.3s;
+}
+
+.form-input {
+  border-radius: 2px;
+  background-color: #243a5d;
+  color: white;
+  font-size: 15px;
+  padding: 10px;
+  margin: 10px;
+}
+
+input.form-input:hover {
+  background-color: rgb(41, 69, 113);
+}
+
+.login-button {
+  background-color: #45c3e0;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  color: white;
+  padding: 10px 50px;
+  margin-top: 10px;
+  font-weight: 200;
+  font-size: 20px;
+}
+
+button.login-button:hover {
+  background-color: #81e3fa;
+  transition: 0.5s;
+}
+
+::placeholder {
+  color: white;
+  opacity: 0.8;
+}
+
+h2.front {
+  color: white;
+  font-weight: 400;
+  text-align: center;
+  background: rgb(129, 227, 250, 0.8);
+  padding: 20px;
+}
+h2.contact {
+  color: black;
+  font-size: 30px;
+  font-weight: 400;
+  text-align: left;
+  background: #ffffff;
+  padding: 20px;
+}
+
+.contact-container {
+  margin: 0 auto;
+  display: flex;
+  padding-top: 0;
+  background-color: #1a2d4b;
+  height: 350px;
+  width: 800px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(199, 239, 239);
+}
+
+.contact-text-container {
+  text-align: left;
+  width: 400px;
+  margin: 20px;
+}
+
+.contact-text {
+  color: white;
+  font-size: 20px;
+}
+
+.map {
+  margin-top: 20px;
+  margin-right: 30px;
+}
+
