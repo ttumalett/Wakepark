@@ -13,6 +13,8 @@ public class User {
     @Id
     @GeneratedValue
     long id;
+    String username;
+    String password;
     String status;
     String firstName;
     String lastName;
