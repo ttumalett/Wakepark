@@ -43,6 +43,37 @@ export class App {
     document.getElementById("content").innerHTML = contactPage;
 
   }
+
+  registerPage() {
+    var registerPage = "    <div class=\"register-banner\">\n" +
+      "        <div class=\"register-text\">REGISTREERI <br> KASUTAJA </div>\n" +
+      "    </div>\n" +
+      "    <div class=\"register-container\">\n" +
+      "        <form class=\"register-form\">\n" +
+      "            <div style=\"padding-top: 10px;\">\n" +
+      "                <input type=\"text\" id=\"firstname\" name=\"firstname\" class=\"form-input\" placeholder=\"Eesnimi\"  required/>\n" +
+      "            </div>                                                                                                            \n" +
+      "            <div class=\"form-group\">\n" +
+      "                <input type=\"text\" id=\"surname\" name=\"surname\" class=\"form-input\" placeholder=\"Perekonnanimi\"  required/>\n" +
+      "            </div>\n" +
+      "            <div class=\"form-group\">\n" +
+      "                <input type=\"text\" id=\"username\" name=\"username\" class=\"form-input\" placeholder=\"Kasutajanimi\"  required/>\n" +
+      "            </div>\n" +
+      "            <div class=\"form-group\">\n" +
+      "                <input type=\"text\" id=\"password_reg\" name=\"password_reg\" class=\"form-input\" placeholder=\"Parool\"  required/>\n" +
+      "            </div>\n" +
+      "            <div class=\"form-group\">\n" +
+      "                <input type=\"email\" id=\"email\" name=\"email\" class=\"form-input\" placeholder=\"E-mail\"  required/>\n" +
+      "            </div>\n" +
+      "            <div class=\"form-group\">\n" +
+      "                <input type=\"number\" id=\"phonenumber\" name=\"phonenumber\" class=\"form-input\" placeholder=\"Telefoninumber\"  required/>\n" +
+      "            </div>\n" +
+      "            <button type=\"submit\" class=\"submit-button\">Registreeri</button>                                                \n" +
+      "        </form>\n" +
+      "    </div>";
+    document.getElementById("content").innerHTML = registerPage;
+  }
+
 }
 
 
