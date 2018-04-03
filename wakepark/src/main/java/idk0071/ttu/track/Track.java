@@ -1,6 +1,6 @@
-package idk0071.ttu.park;
+package idk0071.ttu.track;
 
-import idk0071.ttu.user.Reservation;
+import idk0071.ttu.reservation.Reservation;
 import lombok.Data;
 
 import javax.persistence.Entity;
