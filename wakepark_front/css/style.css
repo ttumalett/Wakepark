@@ -135,7 +135,7 @@ input.form-input:hover {
   background-color: rgb(41, 69, 113);
 }
 
-.login-button {
+.login-button, .submit-button {
   background-color: #45c3e0;
   border-style: solid;
   border-width: 1px;
@@ -147,7 +147,7 @@ input.form-input:hover {
   font-size: 20px;
 }
 
-button.login-button:hover {
+button.login-button:hover, button.submit-button:hover {
   background-color: #81e3fa;
   transition: 0.5s;
 }
@@ -201,3 +201,66 @@ h2.contact {
   margin-right: 30px;
 }
 
+.info-header {
+  width: 400px;
+  position: relative;
+  height: 100px;
+  background: white;
+  margin-top: 80px;
+  margin-left: 260px;
+}
+
+.info-header-text {
+: 30px;
+}
+
+.info-container {
+  background-color: #1A2D4B;
+  position: absolute;
+  padding: 30px;
+  text-align: center;
+  width: 300px;
+  height: 400px;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+
+.register-banner {
+  text-align: center;
+  width: 400px;
+  height: 60px;
+  background-color: rgba(16, 31, 56, 0.97);
+  margin: 0 auto;
+  padding-top: 50px;
+  margin-top: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(199, 239, 239);
+}
+
+.register-text {
+  color: white;
+  font-size: 30px;
+  font-weight: 200;
+  position: relative;
+  top: 50%;
+  transform: translateY(-80%);
+}
+
+.register-container {
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 0;
+  background-color: rgb(26, 45, 75, 0.9);
+  height: 480px;
+  width: 400px;
+  border-style: solid;
+  border-width: 1px;
+  border-top: none;
+  border-color: rgb(199, 239, 239);
+}
+
+.register-form {
+  text-align: center;
+  transition: 0.3s;
+}
