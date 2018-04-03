@@ -1,0 +1,16 @@
+<template>
+  <div class="login-banner">
+    <p class="login-text">LOGI SISSE <br> JA BRONEERI SÕIDUAEG</p>
+  </div>
+  <div class="login-container">
+    <form role="form" submit.delegate='register()' class="login-form">
+      <div style="padding-top: 10px;">
+        <input type="text" id="username" name="username" class="form-input" placeholder="Kasutajanimi"  required/>
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" name="password" class="form-input" placeholder="Parool"  required/>
+      </div>
+      <button type="submit" class="login-button">Logi sisse</button>
+    </form>
+  </div>
+</template>

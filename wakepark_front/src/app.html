@@ -1,31 +1,5 @@
 <template>
-  <!-- Navigation -->
-  <div>
-    <ul class="nav-bar"
-      <li> <a style="width: 500px; font-size: 40px;" href="">MÄNNIKU WAKEPARK</a>
-      </li>
-      <li> <a class="nav-button" click.delegate=loginPage() href="">Logi sisse</a>
-      </li>
-      <li> <a class="nav-button" click.delegate=contactPage() href="">Kontakt</a>
-      </li>
-      <li> <a class="nav-button"  href="">Info</a>
-      </li>
-      <li> <a class="nav-button"  click.delegate=registerPage() href="">Töötaja</a>
-      </li>
-    </ul>
-  </div>
-  <div id="content">
-    <div class="heading">
-      <h2>Männiku Wakepark</h2>
-    </div>
-    <div class="queue-container">
-      <div class="tracks-container">
-        <div class="tracks">
-          <div class="track"></div>
-          <div class="track"></div>
-          <div class="track"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <require from="navbar.html"></require>
+  <navbar router.bind="router"></navbar>
+  <router-view></router-view>
 </template>
