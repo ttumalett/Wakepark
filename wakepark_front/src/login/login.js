@@ -4,18 +4,18 @@ export class login {
   constructor() {
   }
 
-  data = {};
+  userData = {"action" : "login"};
 
   login() {
     let client = new HttpClient();
     client.fetch('http://localhost:8080', {
       'method': "POST",
-      'body': json(this.data)
+      'body': json(this.userData)
       })
       .then(response => response.json())
       .then(data => {
-        console.log("Server saatis " + data.username + " " + data.password)
+        console.log(data.response)
       });
-
+    document.getElementById("form1").reset();
   }
 }
