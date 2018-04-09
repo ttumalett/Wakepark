@@ -10,7 +10,8 @@ export class App {
       {route: 'login', name: 'login', moduleId: 'login/login', title: "Logi sisse", nav: true},
       {route: 'register', name: 'register', moduleId: 'register/register', title: 'Registreeri', nav: true},
       {route: 'contacts', name: 'contacts', moduleId: 'contacts/contacts', title: 'Kontaktid', nav: true},
-      {route: 'info', name: 'info', moduleId: 'info/info', title: 'Info', nav: true}
+      {route: 'info', name: 'info', moduleId: 'info/info', title: 'Info', nav: true},
+      {route: 'userHome', name: 'userHome', moduleId: 'userHome/userHome', title: 'User', nav: true}
       ]
     )
   }

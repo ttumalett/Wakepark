@@ -54,9 +54,9 @@ ul.nav-bar a.nav-button:hover {
 .queue-container{
   text-align: center;
   margin: 0 auto;
+  margin-bottom: 10px;
   padding-top: 0;
   background-color: rgb(26, 45, 75, 0.9);
-  height: 300px;
   width: 800px;
   border-style: solid;
   border-width: 1px;
@@ -65,12 +65,10 @@ ul.nav-bar a.nav-button:hover {
 }
 
 .tracks-container {
-  background: white;
   margin: 0 auto;
   text-align: center;
   color: black;
-  width: 100px;
-  height: 100px;
+  width: 600px;
   margin-top: 10px;
   width: 100%;
   display: flex;
@@ -78,17 +76,38 @@ ul.nav-bar a.nav-button:hover {
 }
 
 .tracks {
-  width: 500px;
+  width: 700px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .track {
   border-style: solid;
-  border-width: 2px;
-  height: 50px;
-  width: 100px;
+  border-width: 1px;
+  border-color: black;
+  width: 170px;
   float: left;
-  margin: 20px;
-  padding: 10px;
+  margin-left: 40px;
+  padding: 5px;
+  background: rgba(48, 78, 126, 0.97);
+  color: white;
+  font-weight: 200;
+}
+
+.trackName {
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.rider {
+  font-size: 15px;
+  line-height: 25px;
+  margin-bottom: 5px;
+  border-style: solid;
+  border-width: 1px;
 }
 
 .login-banner {
@@ -147,7 +166,19 @@ input.form-input:hover {
   font-size: 20px;
 }
 
-button.login-button:hover, button.submit-button:hover {
+.register-button {
+  background: rgb(129, 227, 250, 0.8);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  color: white;
+  padding: 5px 10px;
+  margin-top: 10px;
+  font-weight: 200;
+  font-size: 15px;
+}
+
+button.login-button:hover, button.submit-button:hover, button.register-button:hover {
   background-color: #81e3fa;
   transition: 0.5s;
 }
@@ -159,7 +190,8 @@ button.login-button:hover, button.submit-button:hover {
 
 h2.front {
   color: white;
-  font-weight: 400;
+  font-weight: 200;
+  font-size: 30px;
   text-align: center;
   background: rgb(129, 227, 250, 0.8);
   padding: 20px;
@@ -276,4 +308,22 @@ h2.contact {
 .register-form {
   text-align: center;
   transition: 0.3s;
+}
+
+.user-register-container {
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 0;
+  background-color: rgb(26, 45, 75, 0.9);
+  height: 155px;
+  width: 200px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(199, 239, 239);
+}
+
+.selectTrack, .selectTime {
+  margin-top: 10px;
+  width: 100px;
+  height: 30px;
 }

@@ -1,0 +1,50 @@
+<template>
+  <div class="heading">
+    <h2 class="front">ESTRELLA WAKEPARK</h2>
+  </div>
+  <div class="queue-container">
+    <div class="tracks-container">
+      <div class="tracks">
+        <div class="track">
+          <div class="trackName" style="color: #37baff;">Live Fearless</div>
+          <div class="queue">
+            <div style="font-size: 15px;">Sellel rajal hetkel järjekorda ei ole</div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="trackName" style="color: #ff1212;">Estrella</div>
+          <div class="queue">
+            <div style="font-size: 15px;">Sellel rajal hetkel järjekorda ei ole</div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="trackName" style="color: #000000;">Red Bull</div>
+          <div class="queue">
+            <div style="font-size: 15px;">Sellel rajal hetkel järjekorda ei ole</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="user-register-container">
+    <form class="register-form">
+      <div>
+        <select class="selectTrack" id="selectTrack">
+          <option name="selectedTrack" value="1">Fearless</option>
+          <option name="selectedTrack" value="2">Estrella</option>
+          <option name="selectedTrack" value="3">Red Bull</option>
+        </select>
+      </div>
+      <div style="padding-top: 10px;">
+        <select class="selectTime" id="selectTime">
+          <option name="selectedTime" value="12:00">12:00</option>
+          <option name="selectedTime" value="12:15" disabled>12:15</option>
+          <option name="selectedTime" value="12:20">12:20</option>
+          <option name="selectedTime" value="12:25">12:25</option>
+          <option name="selectedTime" value="12:25">12:30</option>
+        </select>
+      </div>
+      <button class="register-button" style="margin-top: 15px;">Broneeri</button>
+    </form>
+  </div>
+</template>
