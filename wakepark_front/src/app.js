@@ -6,12 +6,10 @@ export class App {
     this.router = router;
     config.title = "Wakepark";
     config.map([
-      {route: ['', 'home'], name: 'home', moduleId: 'home/index', title: "Avaleht", nav: true},
+      {route: ['', 'home/index'], name: 'home', moduleId: 'home/index', title: "Avaleht", nav: true},
       {route: 'login', name: 'login', moduleId: 'login/login', title: "Logi sisse", nav: true},
-      {route: 'register', name: 'register', moduleId: 'register/register', title: 'Registreeri', nav: true},
-      {route: 'contacts', name: 'contacts', moduleId: 'contacts/contacts', title: 'Kontaktid', nav: true},
-      {route: 'info', name: 'info', moduleId: 'info/info', title: 'Info', nav: true},
-      {route: 'userHome', name: 'userHome', moduleId: 'userHome/userHome', title: 'User', nav: true}
+      {route: ['contacts', 'logout'], name: 'contacts', moduleId: 'contacts/contacts', title: 'Kontaktid', nav: true},
+      {route: 'info', name: 'info', moduleId: 'info/info', title: 'Info', nav: true}
       ]
     )
   }

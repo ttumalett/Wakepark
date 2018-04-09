@@ -1,7 +1,11 @@
-import {HttpClient, json} from 'aurelia-fetch-client'
+import {HttpClient, json} from 'aurelia-fetch-client';
+import {inject, Aurelia} from 'aurelia-framework';
 
+@inject(Aurelia)
 export class login {
-  constructor() {
+  constructor(aurelia) {
+    this.message = "";
+    this.aurelia = aurelia;
   }
 
   userData = {"action" : "login"};
@@ -14,8 +18,24 @@ export class login {
       })
       .then(response => response.json())
       .then(data => {
-        console.log(data.response)
+        this.loggingin(data)
       });
     document.getElementById("form1").reset();
+  }
+
+  loggingin(data) {
+    if (data.response == "successful") {
+      console.log(data.status);
+      if (data.status == "0") {
+        console.log(data.status);
+        console.log("töötaja");
+        this.aurelia.setRoot('workerLoggedInApp');
+      } else {
+        console.log("tava");
+        this.aurelia.setRoot('userLoggedInApp');
+      }
+    } else {
+      this.message = "Proovi uuesti!";
+    }
   }
 }

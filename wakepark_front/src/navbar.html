@@ -1,9 +1,9 @@
 <template bindable="router">
   <div>
     <ul class="nav-bar">
-    <li repeat.for="nav of router.navigation">
-      <a class="nav-button" href.bind="nav.href">${nav.title}</a>
-    </li>
+      <li repeat.for="nav of router.navigation">
+        <a class="nav-button" href.bind="nav.href">${nav.title}</a>
+      </li>
     </ul>
   </div>
 </template>

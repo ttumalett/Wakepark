@@ -15,6 +15,7 @@ public class Login {
         String password = request.getString("password");
         if (userExists(username, password, userRepository)) {
             answer.put("response", "successful");
+            answer.put("status", getUserStatus(username, userRepository));
         } else {
             answer.put("response", "unsuccessful");
         }
@@ -22,12 +23,15 @@ public class Login {
     }
 
     public static boolean userExists(String username, String password, UserRepository userRepository) {
-        List<User> users = userRepository.findAll();
-        for (User user : users) {
-            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                return true;
-            }
+        if (userRepository.existsByUsername(username)) {
+            User user = userRepository.findByUsername(username);
+            return user.getPassword().equals(password);
         }
         return false;
+    }
+
+    public static int getUserStatus(String username, UserRepository userRepository) {
+        User user = userRepository.findByUsername(username);
+        return user.getStatus();
     }
 }
