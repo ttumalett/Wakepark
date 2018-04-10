@@ -13,7 +13,7 @@ export class userLoggedInApp {
         {route: 'contacts', name: 'contacts', moduleId: 'contacts/contacts', title: 'Kontaktid', nav: true},
         {route: 'info', name: 'info', moduleId: 'info/info', title: 'Info', nav: true},
         {route: ['', 'login', 'userHome'], name: 'userHome', moduleId: 'userHome/userHome', title: 'Broneeri', nav: true},
-        {route: 'logout', name: 'home', moduleId: 'home/index', title: "Logi välja", nav: true}
+        {route: 'logout', redirect: 'info'}
       ]
     )
   }

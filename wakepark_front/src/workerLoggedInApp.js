@@ -12,7 +12,7 @@ export class workerLoggedInApp {
     config.map([
         {route: ['', 'login', 'userHome'], name: 'userHome', moduleId: 'userHome/userHome', title: 'Broneeri aeg', nav: true},
         {route: 'register', name: 'register', moduleId: 'register/register', title: 'Registreeri', nav: true},
-        {route: ['logout'], name: 'home', moduleId: 'home/index', title: "Logi välja", nav: true},
+        {route: 'logout', redirect: 'register'}
       ]
     )
   }

@@ -29,6 +29,8 @@ public class RestApiController {
             return Register.respond(requestJson, userRepository, rideCountRepository);
         } else if (action.equals("login")) {
             return Login.respond(requestJson, userRepository);
+        } else if (action.equals("showUserInfo")) {
+            return UserProfile.respond(requestJson, userRepository, rideCountRepository);
         }
         return "proov";
     }
