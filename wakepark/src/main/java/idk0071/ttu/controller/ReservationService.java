@@ -29,7 +29,6 @@ public class ReservationService {
             Reservation reservation = new Reservation();
             if (request.getString("action").equals("addReservation")) {
                 User user = userRepository.findById(Integer.valueOf(client));
-                user.addReservation(reservation);
                 reservation.setClient(user);
             } else {
                 reservation.setClientName(client);
@@ -37,7 +36,6 @@ public class ReservationService {
             reservation.setReservationStart(rideStart);
             reservation.setReservationEnd(rideEnd);
             reservation.setTrack(track);
-            track.addReservation(reservation);
             reservationRepository.save(reservation);
             answer.put("response", "successful");
         } else {

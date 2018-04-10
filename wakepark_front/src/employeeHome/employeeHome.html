@@ -8,61 +8,58 @@
         <div class="track">
           <div class="trackName" style="color: #37baff;">Live Fearless</div>
           <div class="queue">
-            <div style="font-size: 15px;">Sellel rajal hetkel järjekorda ei ole</div>
+            <div repeat.for="ride of liveFearlessReservations" class="rider">${ride.client.firstName}</div>
           </div>
           <div>
-            <form style="float: left;">
-              <input type="text" class="riderInput" placeholder="Lisa sõitja"/>
-            </form>
+            <form style="float: left;" submit.delegate="reserveClientLiveFearless()">
+              <input type="text" class="riderInput" value.bind="reservationLiveFearless.client" placeholder="Lisa sõitja"/>
             <div style="padding-top: 10px;">
-              <select style="width: 50px;">
-                <option disabled selected>aeg</option>
-                <option>12:00</option>
-                <option>13:00</option>
+              <select style="width: 50px;" value.bind="reservationLiveFearless.startTime">
+                <option repeat.for="rideTime of times" value.bind="rideTime.start">
+                  ${rideTime.start}
+                </option>
               </select>
             </div>
+            </form>
           </div>
         </div>
         <div class="track">
           <div class="trackName" style="color: #ff1212;">Estrella</div>
           <div class="queue">
-            <div style="font-size: 15px;">Sellel rajal hetkel järjekorda ei ole</div>
+            <div repeat.for="ride of estrellaReservations" class="rider">${ride.client.firstName}</div>
           </div>
           <div>
-            <form style="float: left;">
-              <input type="text" class="riderInput" placeholder="Lisa sõitja"/>
-            </form>
+            <form style="float: left;" submit.delegate="reserveClientEstrella()">
+              <input type="text" class="riderInput" value.bind="reservationEstrella.client" placeholder="Lisa sõitja"/>
             <div style="padding-top: 10px;">
-              <select style="width: 50px;">
-                <option disabled selected>aeg</option>
-                <option>12:00</option>
-                <option>13:00</option>
+              <select value.bind="reservationEstrella.startTime" style="width: 50px;">
+                <option repeat.for="rideTime of times" value.bind="rideTime.start">
+                  ${rideTime.start}
+                </option>
               </select>
             </div>
+            </form>
           </div>
         </div>
         <div class="track">
           <div class="trackName" style="color: #000000;">Red Bull</div>
           <div class="queue">
-            <div style="font-size: 15px;">Sellel rajal hetkel järjekorda ei ole</div>
+            <div repeat.for="ride of redBullReservations" class="rider">${ride.client.firstName}</div>
           </div>
           <div>
-            <form style="float: left;">
-              <input type="text" class="riderInput" placeholder="Lisa sõitja"/>
-            </form>
+            <form style="float: left;" submit.delegate="reserveClientRedBull()">
+              <input type="text" class="riderInput" value.bind="reservationRedBull.client" placeholder="Lisa sõitja"/>
             <div style="padding-top: 10px;">
-              <select style="width: 50px;">
-                <option disabled selected>aeg</option>
-                <option>12:00</option>
-                <option>13:00</option>
+              <select style="width: 50px;" value.bind="reservationRedBull.startTime">
+                <option repeat.for="rideTime of times" value.bind="rideTime.start">
+                  ${rideTime.start}
+                </option>
               </select>
             </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div>
-  <button id="logout" click.delegate=logout()>Log out</button>
   </div>
 </template>

@@ -10,8 +10,9 @@ export class workerLoggedInApp {
     this.router = router;
     config.title = "Wakepark";
     config.map([
-        {route: ['', 'login', 'userHome'], name: 'userHome', moduleId: 'userHome/userHome', title: 'Broneeri aeg', nav: true},
+        {route: ['', 'login', 'employeeHome'], name: 'employeeHome', moduleId: 'employeeHome/employeeHome', title: 'Broneeri aeg', nav: true},
         {route: 'register', name: 'register', moduleId: 'register/register', title: 'Registreeri', nav: true},
+        {route: 'employeeUpdate', name: 'employeeUpdate', moduleId: 'employeeUpdate/employeeUpdate', title: 'Kasutajad', nav: true},
         {route: 'logout', redirect: 'register'}
       ]
     )

@@ -2,8 +2,8 @@
   <div class="searchContainer">
     <div class="search">
       <span class="icon"></span>
-      <form>
-        <input class="searchInput" type="search" placeholder="Otsi kasutajat...">
+      <form submit.delegate="searchUser()">
+        <input class="searchInput" type="search" value.bind="userData.username" placeholder="Otsi kasutajat...">
         <button class="searchButton" type="submit"><i class="fas fa-search"></i></button>
       </form>
     </div>
@@ -32,22 +32,22 @@
       </div>
       <div class="users-field">
         <div class="users-field-column">
-          <p align="left" class="users-field-column-text">lisa-marie.nuud</p>
+          <p align="left" class="users-field-column-text">${userName}</p>
         </div>
         <div class="users-field-column">
-          <p align="middle" class="users-field-column-text" id="rides">30</p>
+          <p align="middle" class="users-field-column-text" id="rides">${ridesLeft}</p>
         </div>
         <div class="users-field-column">
-          <p align="middle" class="users-field-column-text">Lisa-Marie</p>
+          <p align="middle" class="users-field-column-text">${firstName}</p>
         </div>
         <div class="users-field-column">
-          <p align="middle" class="users-field-column-text">Nüüd</p>
+          <p align="middle" class="users-field-column-text">${lastName}</p>
         </div>
         <div class="users-field-column">
-          <p align="middle" class="users-field-column-text">lisa.nyyd@gmail.com</p>
+          <p align="middle" class="users-field-column-text">${email}</p>
         </div>
         <div class="users-field-column">
-          <p align="middle" class="users-field-column-text">5033714</p>
+          <p align="middle" class="users-field-column-text">${phoneNr}</p>
         </div>
       </div>
     </div>
