@@ -8,20 +8,19 @@
         <div class="track">
           <div class="trackName" style="color: #37baff;">Live Fearless</div>
           <div class="queue">
-            <div class="rider">Lisa-Marie Nüüd <br></div>
-            <div class="rider">Mirjam Mälksoo <br></div>
+            <div repeat.for="ride of liveFearlessReservations" class="rider">${ride.client.firstName}</div>
           </div>
         </div>
         <div class="track">
           <div class="trackName" style="color: #ff1212;">Estrella</div>
           <div class="queue">
-            <div style="font-size: 15px;">Sellel rajal hetkel järjekorda ei ole</div>
+            <div repeat.for="ride of estrellaReservations" class="rider">${ride.client.firstName}</div>
           </div>
         </div>
         <div class="track">
           <div class="trackName" style="color: #000000;">Red Bull</div>
           <div class="queue">
-            <div class="rider">Lisa-Marie Nüüd <br></div>
+            <div repeat.for="ride of redBullReservations" class="rider">${ride.client.firstName}<br></div>
           </div>
         </div>
       </div>

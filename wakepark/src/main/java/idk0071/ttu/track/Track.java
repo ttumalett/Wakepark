@@ -10,7 +10,6 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
-@Data
 public class Track {
     @Id
     @GeneratedValue
@@ -18,4 +17,35 @@ public class Track {
     String name;
     @OneToMany
     List<Reservation> reservations;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+    public void addReservation(Reservation reservation) {
+        reservations.add(reservation);
+    }
+
+    public void removeReservation(Reservation reservation) {
+        reservations.remove(reservation);
+    }
+
+    public void setTrackId(long trackId) {
+        this.trackId = trackId;
+    }
+
+    public long getTrackId() {
+        return trackId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
 }

@@ -8,15 +8,55 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
 public class Reservation {
     @Id
     @GeneratedValue
     long reservationId;
     @ManyToOne
-    User clientId;
+    User client;
+    String clientName;
     @ManyToOne
-    Track trackId;
+    Track track;
     LocalDateTime reservationStart;
     LocalDateTime reservationEnd;
+
+    public User getClient() {
+        return client;
+    }
+
+    public Track getTrack() {
+        return track;
+    }
+
+    public LocalDateTime getReservationEnd() {
+        return reservationEnd;
+    }
+
+    public LocalDateTime getReservationStart() {
+        return reservationStart;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public void setClient(User client) {
+        this.client = client;
+    }
+
+    public void setTrack(Track track) {
+        this.track = track;
+    }
+
+    public void setReservationStart(LocalDateTime reservationStart) {
+        this.reservationStart = reservationStart;
+    }
+
+    public void setReservationEnd(LocalDateTime reservationEnd) {
+        this.reservationEnd = reservationEnd;
+    }
 }

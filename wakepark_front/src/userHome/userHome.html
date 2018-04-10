@@ -8,44 +8,43 @@
         <div class="track">
           <div class="trackName" style="color: #37baff;">Live Fearless</div>
           <div class="queue">
-            <div style="font-size: 15px;">Sellel rajal hetkel järjekorda ei ole</div>
+            <div repeat.for="ride of liveFearlessReservations" class="rider">${ride.client.firstName}</div>
           </div>
         </div>
         <div class="track">
           <div class="trackName" style="color: #ff1212;">Estrella</div>
           <div class="queue">
-            <div style="font-size: 15px;">Sellel rajal hetkel järjekorda ei ole</div>
+            <div repeat.for="estrella of estrellaReservations" class="rider">${estrella.client.firstName}</div>
           </div>
         </div>
         <div class="track">
           <div class="trackName" style="color: #000000;">Red Bull</div>
           <div class="queue">
-            <div style="font-size: 15px;">Sellel rajal hetkel järjekorda ei ole</div>
+            <div repeat.for="redbull of redBullReservations" class="rider">${redbull.client.firstName}</div>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="user-register-container">
-    <form class="register-form">
+    <form class="register-form" submit.delegate="reserveRide()">
       <div>
-        <select class="selectTrack" id="selectTrack">
-          <option name="selectedTrack" value="1">Fearless</option>
-          <option name="selectedTrack" value="2">Estrella</option>
-          <option name="selectedTrack" value="3">Red Bull</option>
+        <select value.bind="reservationData.trackName" class="selectTrack" id="selectTrack">
+          <option repeat.for="track of tracks" value.bind="track.name">
+            ${track.name}
+          </option>
         </select>
       </div>
       <div style="padding-top: 10px;">
-        <select class="selectTime" id="selectTime">
-          <option name="selectedTime" value="12:00">12:00</option>
-          <option name="selectedTime" value="12:15" disabled>12:15</option>
-          <option name="selectedTime" value="12:20">12:20</option>
-          <option name="selectedTime" value="12:25">12:25</option>
-          <option name="selectedTime" value="12:25">12:30</option>
+        <select value.bind="reservationData.startTime" class="selectTime" id="selectTime">
+          <option repeat.for="rideTime of times" value.bind="rideTime.start">
+            ${rideTime.start}
+          </option>
         </select>
       </div>
       <button class="register-button" style="margin-top: 15px;">Broneeri</button>
     </form>
+    <p class="confirmation">${message}</p>
     <button id="logout" click.delegate=logout()>Log out</button>
   </div>
 </template>
