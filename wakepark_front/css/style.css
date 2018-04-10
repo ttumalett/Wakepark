@@ -62,6 +62,7 @@ ul.nav-bar a.nav-button:hover {
   border-width: 1px;
   border-color: rgb(199, 239, 239);
   display: block;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .tracks-container {
@@ -93,6 +94,8 @@ ul.nav-bar a.nav-button:hover {
   background: rgba(48, 78, 126, 0.97);
   color: white;
   font-weight: 200;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
 }
 
 .trackName {
@@ -110,6 +113,29 @@ ul.nav-bar a.nav-button:hover {
   border-width: 1px;
 }
 
+.riderInput {
+  border: 1px solid #ffffff;
+  background-color: #243a5d;
+  color: white;
+  width: 80px;
+  height: 15px;
+  font-size: 12px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 2px 10px 0 rgba(0,0,0,0.19);
+  -webkit-transition: background .25s ease;
+  -moz-transition: background .25s ease;
+  -ms-transition: background .25s ease;
+  -o-transition: background .25s ease;
+  transition: background .25s ease;
+}
+
+.riderInput:hover {
+  background-color: #455b80;
+
+}
+
 .login-banner {
   text-align: center;
   width: 500px;
@@ -117,6 +143,7 @@ ul.nav-bar a.nav-button:hover {
   margin: 0 auto;
   padding-top: 50px;
 }
+
 
 .login-text {
   color: white;
@@ -147,7 +174,7 @@ ul.nav-bar a.nav-button:hover {
   color: white;
   font-size: 15px;
   padding: 10px;
-  margin: 10px;
+  margin: 8px;
 }
 
 input.form-input:hover {
@@ -195,6 +222,7 @@ h2.front {
   text-align: center;
   background: rgb(129, 227, 250, 0.8);
   padding: 20px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 h2.contact {
   color: black;
@@ -205,7 +233,7 @@ h2.contact {
   padding: 20px;
 }
 
-.contact-container {
+.contact-container, .profile-change-container {
   margin: 0 auto;
   display: flex;
   padding-top: 0;
@@ -297,7 +325,7 @@ h2.contact {
   margin: 0 auto;
   padding-top: 0;
   background-color: rgb(26, 45, 75, 0.9);
-  height: 480px;
+  height: 500px;
   width: 400px;
   border-style: solid;
   border-width: 1px;
@@ -326,4 +354,187 @@ h2.contact {
   margin-top: 10px;
   width: 100px;
   height: 30px;
+}
+
+.searchContainer {
+  width: 800px;
+  margin: 100px auto;
+  height: 50px;
+}
+
+.search {
+  width: 800px;
+  vertical-align: middle;
+  margin-top: 15px;
+  white-space: nowrap;
+  position: relative;
+}
+
+.searchInput, .user-change-rides {
+  color: #e6e9eb;
+  width: 700px;
+  height: 50px;
+  font-weight: 200;
+  background-color: rgb(26, 45, 75, 0.9);
+  font-size: 20px;
+  float: left;
+  padding-left: 30px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border-right: none;
+
+  -webkit-transition: background .55s ease;
+  -moz-transition: background .55s ease;
+  -ms-transition: background .55s ease;
+  -o-transition: background .55s ease;
+  transition: background .55s ease;
+}
+
+.searchInput::-webkit-input-placeholder {
+  color: #e6e9eb;
+}
+
+.searchButton, .user-change-button {
+  width: 100px;
+  height: 50px;
+  float: left;
+  background: rgb(129, 227, 250, 0.8);
+  color: white;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: rgb(45, 75, 0.9);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+
+  -webkit-transition: background .55s ease;
+  -moz-transition: background .55s ease;
+  -ms-transition: background .55s ease;
+  -o-transition: background .55s ease;
+  transition: background .55s ease;
+}
+
+.searchButton:hover, .searchButton:focus, .searchButton:active, .user-change-button:hover, .user-change-button:focus, .user-change-button:active{
+  outline:none;
+  background-color: rgba(186, 242, 255, 0.8);
+
+}
+
+.search .icon {
+  margin-left: 10px;
+  margin-top: 15px;
+  top: 50%;
+  position: absolute;
+  color: #c0c0c0;
+  z-index: 1;
+}
+
+.searchInput:hover, .searchInput:focus, .searchInput:active, .user-change-rides:hover, .user-change-rides:focus, .user-change-rides.active {
+  outline:none;
+  background-color: #39537c;
+
+}
+
+.users-container {
+  display: flex;
+  margin: 0 auto;
+  padding-top: 0;
+  background-color: rgba(26, 45, 75, 0.85);
+  height: 100px;
+  width: 1200px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(199, 239, 239);
+  border-radius: 5px;
+}
+
+.users-header {
+  width: 1000px;
+  height: 50px;
+  background-color: rgba(57, 83, 124, 0.75);
+  float: left;
+  position: absolute;
+}
+
+.users-header-column {
+  float: left;
+  background-color: #39537c;
+  height: 50px;
+  width: 159px;
+  border-right: 1px solid #293b58;
+  border-bottom: 1px solid #293b58;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+
+.users-header-column-text {
+  color: #c0c0c0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+
+}
+
+.users-field {
+  width: 1200px;
+  height: 50px;
+  background-color: rgb(26, 45, 75, 0.8);
+  position: relative;
+  top: 50%;
+}
+
+.users-header {
+  width: 1200px;
+  height: 50px;
+  background-color: rgba(57, 83, 124, 0.75);
+  float: left;
+  position: absolute;
+}
+
+.users-field-column {
+  float: left;
+  height: 50px;
+  width: 159px;
+  color: #ffffff;
+  border-right: 1px solid #425a83;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: 200;
+  font-size: 15px;
+}
+
+.user-change-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px;
+}
+
+.user-change-form {
+  width: 280px;
+}
+
+.profile-change-form {
+  width: 600px;
+  background-color: white;
+}
+
+label {
+  display: inline-block;
+  width: 120px;
+  margin-left: 10px;
+}
+
+.profile-change-form p {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.profile-change-form input {
+
+}
+
+.profile-change-input {
 }

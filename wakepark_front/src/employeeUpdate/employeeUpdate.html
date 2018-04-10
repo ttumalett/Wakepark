@@ -1,0 +1,61 @@
+<template>
+  <div class="searchContainer">
+    <div class="search">
+      <span class="icon"></span>
+      <form>
+        <input class="searchInput" type="search" placeholder="Otsi kasutajat...">
+        <button class="searchButton" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+  </div>
+  <div>
+    <div class="users-container">
+      <div class="users-header">
+        <div class="users-header-column">
+          <p align="left" class="users-header-column-text">KASUTAJA</p>
+        </div>
+        <div class="users-header-column">
+          <p align="middle" class="users-header-column-text">SÕIDUKORRAD</p>
+        </div>
+        <div class="users-header-column">
+          <p align="middle" class="users-header-column-text">EESNIMI</p>
+        </div>
+        <div class="users-header-column">
+          <p align="middle" class="users-header-column-text">PEREKONNANIMI</p>
+        </div>
+        <div class="users-header-column">
+          <p align="middle" class="users-header-column-text">EMAIL</p>
+        </div>
+        <div class="users-header-column" style="float: left;">
+          <p align="middle" class="users-header-column-text">TELEFON</p>
+        </div>
+      </div>
+      <div class="users-field">
+        <div class="users-field-column">
+          <p align="left" class="users-field-column-text">lisa-marie.nuud</p>
+        </div>
+        <div class="users-field-column">
+          <p align="middle" class="users-field-column-text" id="rides">30</p>
+        </div>
+        <div class="users-field-column">
+          <p align="middle" class="users-field-column-text">Lisa-Marie</p>
+        </div>
+        <div class="users-field-column">
+          <p align="middle" class="users-field-column-text">Nüüd</p>
+        </div>
+        <div class="users-field-column">
+          <p align="middle" class="users-field-column-text">lisa.nyyd@gmail.com</p>
+        </div>
+        <div class="users-field-column">
+          <p align="middle" class="users-field-column-text">5033714</p>
+        </div>
+      </div>
+    </div>
+    <div class="user-change-form-container">
+      <form class="user-change-form">
+        <input class="user-change-rides" placeholder="Sõidukorrad" style="width: 140px; height: 30px; font-size:15px;">
+        <button class="user-change-button" style="width: 100px; height: 35px;">MUUDA</button>
+      </form>
+    </div>
+  </div>
+</template>
