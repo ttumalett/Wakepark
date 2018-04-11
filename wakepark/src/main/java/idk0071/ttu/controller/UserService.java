@@ -60,6 +60,9 @@ public class UserService {
     public static boolean userExists(String username, String password, UserRepository userRepository) {
         if (userRepository.existsByUsername(username)) {
             User user = userRepository.findByUsername(username);
+            if (user == null) {
+                return false;
+            }
             return user.getPassword().equals(password);
         }
         return false;
@@ -67,6 +70,9 @@ public class UserService {
 
     public static int getUserStatus(String username, UserRepository userRepository) {
         User user = userRepository.findByUsername(username);
+        if (user==null) {
+            return 0;
+        }
         return user.getStatus();
     }
 
@@ -111,6 +117,9 @@ public class UserService {
 
     public static boolean usernameTaken(String username, UserRepository userRepository) {
         List<User> users = userRepository.findAll();
+        if (users == null) {
+            return false;
+        }
         for (User user : users) {
             if (user.getUsername().equals(username)) {
                 return true;

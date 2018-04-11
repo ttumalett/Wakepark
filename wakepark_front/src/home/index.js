@@ -32,6 +32,7 @@ export class Home {
             l++;
           }
         }
+        console.log(this.reservationList);
       });
   }
 }

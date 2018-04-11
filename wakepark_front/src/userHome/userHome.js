@@ -19,7 +19,7 @@ export class userHome {
   times = [
     {start : '12:00'}, {start : '12:15'}, {start : '12:30'}, {start : '12:45'}, {start : '13:00'}
   ];
-  reservationData = {"action" : "addReservation", "client" : "1"};
+  reservationData = {"action" : "addReservation", "client" : "2"};
 
   reserveRide() {
     let client = new HttpClient();

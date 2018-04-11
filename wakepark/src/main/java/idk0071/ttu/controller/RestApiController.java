@@ -51,6 +51,6 @@ public class RestApiController {
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, value="/reservations")
     public List<Reservation> getReservations() {
-        return reservationRepository.findReservationByReservationStartLessThanEqual(LocalDateTime.now());
+        return reservationRepository.findAll();
     }
 }
