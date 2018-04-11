@@ -43,6 +43,8 @@ public class RestApiController {
             return UserService.getUserData(requestJson, userRepository, rideCountRepository);
         } else if (action.equals("addReservation") || action.equals("addReservationWorker")) {
             return ReservationService.addReservation(requestJson, reservationRepository, trackRepository, userRepository);
+        } else if (action.equals("changeUserRides")) {
+            return UserService.changeUserRides(requestJson, userRepository, rideCountRepository);
         }
         return "proov";
     }

@@ -10,6 +10,7 @@ export class userLoggedInApp {
     this.router = router;
     config.title = "Wakepark";
     config.map([
+        {route: 'userSettings', name: 'userSettings', moduleId: 'userSettings/userSettings', title: 'Minu seaded', nav: true},
         {route: 'contacts', name: 'contacts', moduleId: 'contacts/contacts', title: 'Kontaktid', nav: true},
         {route: 'info', name: 'info', moduleId: 'info/info', title: 'Info', nav: true},
         {route: ['', 'login', 'userHome'], name: 'userHome', moduleId: 'userHome/userHome', title: 'Broneeri', nav: true},

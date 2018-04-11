@@ -1,6 +1,8 @@
 <template>
   <div class="heading">
-    <h2 class="front">ESTRELLA WAKEPARK</h2>
+    <h2 class="front">ESTRELLA WAKEPARK
+      <button class="logout-button" id="logout" click.delegate=logout()><i class="fas fa-sign-out-alt fa-2x"></i></button>
+    </h2>
   </div>
   <div class="queue-container">
     <div class="tracks-container">
@@ -13,8 +15,8 @@
           <div>
             <form style="float: left;" submit.delegate="reserveClientLiveFearless()">
               <input type="text" class="riderInput" value.bind="reservationLiveFearless.client" placeholder="Lisa sõitja"/>
-            <div style="padding-top: 10px;">
-              <select style="width: 50px;" value.bind="reservationLiveFearless.startTime">
+            <div style="padding-top: 10px; float: right; margin-left: 10px;">
+              <select style="width: 60px;" value.bind="reservationLiveFearless.startTime">
                 <option repeat.for="rideTime of times" value.bind="rideTime.start">
                   ${rideTime.start}
                 </option>
@@ -31,8 +33,8 @@
           <div>
             <form style="float: left;" submit.delegate="reserveClientEstrella()">
               <input type="text" class="riderInput" value.bind="reservationEstrella.client" placeholder="Lisa sõitja"/>
-            <div style="padding-top: 10px;">
-              <select value.bind="reservationEstrella.startTime" style="width: 50px;">
+            <div style="padding-top: 10px; float: right; margin-left: 10px;">
+              <select value.bind="reservationEstrella.startTime" style="width: 60px;">
                 <option repeat.for="rideTime of times" value.bind="rideTime.start">
                   ${rideTime.start}
                 </option>
@@ -49,8 +51,8 @@
           <div>
             <form style="float: left;" submit.delegate="reserveClientRedBull()">
               <input type="text" class="riderInput" value.bind="reservationRedBull.client" placeholder="Lisa sõitja"/>
-            <div style="padding-top: 10px;">
-              <select style="width: 50px;" value.bind="reservationRedBull.startTime">
+            <div style="padding-top: 10px; float: right; margin-left: 10px;">
+              <select style="width: 60px;" value.bind="reservationRedBull.startTime">
                 <option repeat.for="rideTime of times" value.bind="rideTime.start">
                   ${rideTime.start}
                 </option>

@@ -5,6 +5,7 @@
       <form submit.delegate="searchUser()">
         <input class="searchInput" type="search" value.bind="userData.username" placeholder="Otsi kasutajat...">
         <button class="searchButton" type="submit"><i class="fas fa-search"></i></button>
+        <button class="logout-button" id="logout" click.delegate=logout() style="height:50px;"><i class="fas fa-sign-out-alt fa-2x"></i></button>
       </form>
     </div>
   </div>
@@ -52,8 +53,8 @@
       </div>
     </div>
     <div class="user-change-form-container">
-      <form class="user-change-form">
-        <input class="user-change-rides" placeholder="Sõidukorrad" style="width: 140px; height: 30px; font-size:15px;">
+      <form class="user-change-form" submit.delegate="changeUserRides()">
+        <input class="user-change-rides" value.bind="changeRide.rides" placeholder="Sõidukorrad" style="width: 140px; height: 30px; font-size:15px;">
         <button class="user-change-button" style="width: 100px; height: 35px;">MUUDA</button>
       </form>
     </div>

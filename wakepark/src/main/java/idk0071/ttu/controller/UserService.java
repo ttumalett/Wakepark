@@ -10,6 +10,19 @@ import org.json.JSONObject;
 import java.util.List;
 
 public class UserService {
+    public static String changeUserRides(JSONObject request, UserRepository userRepository,
+                                     RideCountRepository rideCountRepository) throws JSONException {
+        JSONObject answer = new JSONObject();
+        String username = request.getString("user");
+        String newRides = request.getString("rides");
+        User user = userRepository.findByUsername(username);
+        RideCount rideCount = rideCountRepository.findByClient(user);
+        answer.put("ridecount", rideCount.getRideId());
+        rideCount.setRidesLeft(Integer.valueOf(newRides));
+        answer.put("response", "successful");
+        answer.put("newRides", newRides);
+        return answer.toString();
+    }
 
     public static String getUserData(JSONObject request, UserRepository userRepository,
                                      RideCountRepository rideCountRepository) throws JSONException {
@@ -29,6 +42,7 @@ public class UserService {
         }
         return answer.toString();
     }
+
 
     public static String login(JSONObject request, UserRepository userRepository) throws JSONException {
         JSONObject answer = new JSONObject();
@@ -60,6 +74,7 @@ public class UserService {
                                   RideCountRepository rideCountRepository) throws JSONException {
         JSONObject answer = new JSONObject();
         String firstName = request.getString("firstName");
+        String userRides = request.getString("rides");
         String lastName = request.getString("lastName");
         String username = request.getString("username");
         String password = request.getString("password");
@@ -77,7 +92,7 @@ public class UserService {
             addUser(newUser, userRepository);
             RideCount rideCount = new RideCount();
             rideCount.setClient(newUser);
-            rideCount.setRidesLeft(0);
+            rideCount.setRidesLeft(Integer.valueOf(userRides));
             addRideCount(rideCount, rideCountRepository);
             answer.put("response", "successful");
         } else {
