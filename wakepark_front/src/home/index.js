@@ -16,20 +16,14 @@ export class Home {
       .then(response => response.json())
       .then(reservations => {
         this.reservationList = reservations;
-        var e = 0;
-        var r = 0;
-        var l = 0;
         for (let i = 0; i < this.reservationList.length; i++) {
-          var reservation = this.reservationList[i];
-          if (reservation.track.name == 'Estrella') {
-              this.estrellaReservations[e] = reservation;
-              e++;
-          } else if (reservation.track.name == 'Red Bull') {
-            this.redBullReservations[r] = reservation;
-            r++;
-          } else if (reservation.track.name == 'Live Fearless') {
-            this.liveFearlessReservations[l] = reservation;
-            l++;
+          let reservation = this.reservationList[i];
+          if (reservation.track.name === 'Estrella') {
+            this.estrellaReservations.push(reservation);
+          } else if (reservation.track.name === 'Red Bull') {
+            this.redBullReservations.push(reservation);
+          } else if (reservation.track.name === 'Live Fearless') {
+            this.liveFearlessReservations.push(reservation);
           }
         }
         console.log(this.reservationList);

@@ -7,15 +7,11 @@ import idk0071.ttu.track.TrackRepository;
 import idk0071.ttu.user.UserRepository;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-@org.springframework.web.bind.annotation.RestController
+@RestController
 public class RestApiController {
 
     private UserRepository userRepository;
