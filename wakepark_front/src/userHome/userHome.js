@@ -8,6 +8,7 @@ export class userHome {
   liveFearlessReservations = [];
 
   constructor() {
+    this.name = sessionStorage.getItem("currentUser");
     this.message = "";
   }
 
@@ -29,7 +30,7 @@ export class userHome {
     })
       .then(response => response.json())
       .then(data => {
-        if (data.response == "successful") {
+        if (data.response === "successful") {
           this.message = "Oled ajale registreeritud!";
         }
       });

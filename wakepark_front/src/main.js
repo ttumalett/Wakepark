@@ -12,6 +12,16 @@ export function configure(aurelia) {
   if (environment.testing) {
     aurelia.use.plugin('aurelia-testing');
   }
-
-  aurelia.start().then(() => aurelia.setRoot());
+  aurelia.start().then(() => {
+    let root;
+    if (sessionStorage.getItem("currentUser") !== null) {
+      if (sessionStorage.getItem("currentUserStatus") === 1) {
+        root = 'userLoggedInApp'
+      } else {
+        root = 'workerLoggedInApp'
+      }
+      aurelia.setRoot();
+    }
+    aurelia.setRoot('app');
+  });
 }

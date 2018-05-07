@@ -60,6 +60,7 @@ public class UserService {
         String password = userData.getString("password");
         if (userExists(username, password)) {
             answer.put("response", "successful");
+            answer.put("username", username);
             answer.put("status", getUserStatus(username));
         } else {
             answer.put("response", "unsuccessful");

@@ -40,6 +40,7 @@ public class ReservationService {
             if (request.getString("action").equals("addReservation")) {
                 User user = userRepository.findById(Integer.valueOf(client));
                 reservation.setClient(user);
+                reservation.setClientName(user.getFirstName() + " " + user.getLastName());
             } else {
                 reservation.setClientName(client);
             }

@@ -1,10 +1,6 @@
 package idk0071.ttu.controller;
 
 import idk0071.ttu.reservation.Reservation;
-import idk0071.ttu.reservation.ReservationRepository;
-import idk0071.ttu.ridecount.RideCountRepository;
-import idk0071.ttu.track.TrackRepository;
-import idk0071.ttu.user.UserRepository;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;

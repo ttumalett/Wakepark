@@ -15,6 +15,7 @@ export class employeeHome {
   reservationRedBull = {"action" : "addReservationWorker"};
 
   constructor() {
+    this.name = sessionStorage.getItem("currentUser");
   }
   reserveClientEstrella() {
     this.reservationEstrella.trackName = 'Estrella';

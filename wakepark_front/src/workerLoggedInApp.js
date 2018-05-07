@@ -1,12 +1,15 @@
 import {inject, Aurelia} from 'aurelia-framework';
 
+
 @inject(Aurelia)
 export class workerLoggedInApp {
   constructor(aurelia) {
+    console.log("jou");
     this.aurelia = aurelia;
   }
 
   configureRouter(config, router) {
+    console.log("teeb");
     this.router = router;
     config.title = "Wakepark";
     config.map([
@@ -17,8 +20,10 @@ export class workerLoggedInApp {
       ]
     )
   }
-
   logout() {
+    console.log("töötab");
+    sessionStorage.setItem("currentUser", null);
+    sessionStorage.setItem("currentUserStatus", null);
     this.router.navigate("/logout");
     this.aurelia.setRoot("app");
   }

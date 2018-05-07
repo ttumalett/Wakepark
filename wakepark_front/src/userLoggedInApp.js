@@ -3,6 +3,7 @@ import {inject, Aurelia} from 'aurelia-framework';
 @inject(Aurelia)
 export class userLoggedInApp {
   constructor(aurelia) {
+    console.log("tere");
     this.aurelia = aurelia;
   }
 
@@ -18,8 +19,9 @@ export class userLoggedInApp {
       ]
     )
   }
-
   logout() {
+    sessionStorage.setItem("currentUser", null);
+    sessionStorage.setItem("currentUserStatus", null);
     this.router.navigate("/logout");
     this.aurelia.setRoot("app");
   }

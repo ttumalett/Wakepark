@@ -25,6 +25,8 @@ export class login {
 
   selectView(data) {
     if (data.response === "successful") {
+      sessionStorage.setItem("currentUser", data.username);
+      sessionStorage.setItem("currentUserStatus", data.status);
       if (data.status === 0) {
         this.aurelia.setRoot('workerLoggedInApp');
       } else {
