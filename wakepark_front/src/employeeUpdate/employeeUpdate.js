@@ -1,8 +1,8 @@
 import {HttpClient, json} from "aurelia-fetch-client";
 
 export class employeeUpdate {
-  userData = {"action" : "getUserData"};
-  changeRide = {"action" : "changeUserRides"};
+  userData = {};
+  changeRide = {};
   constructor() {
     this.userName = "";
     this.firstName = "";
@@ -14,13 +14,13 @@ export class employeeUpdate {
   changeUserRides() {
     this.changeRide.user = this.userName;
     let client = new HttpClient();
-    client.fetch('http://localhost:8080', {
+    client.fetch('http://localhost:8080/changeUserRides', {
       'method': "POST",
       'body': json(this.changeRide)
     })
       .then(response => response.json())
       .then(data => {
-        if (data.response == "successful") {
+        if (data.response === "successful") {
           console.log(data);
           this.ridesLeft = this.changeRide.rides;
         }
@@ -28,13 +28,13 @@ export class employeeUpdate {
   }
   searchUser() {
     let client = new HttpClient();
-    client.fetch('http://localhost:8080', {
+    client.fetch('http://localhost:8080/getUserData', {
       'method': "POST",
       'body': json(this.userData)
     })
       .then(response => response.json())
       .then(data => {
-        if (data.response == "successful") {
+        if (data.response === "successful") {
           this.userName = this.userData.username;
           this.firstName = data.firstName;
           this.lastName = data.lastName;

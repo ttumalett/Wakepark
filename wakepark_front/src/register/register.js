@@ -5,17 +5,17 @@ export class register {
     this.message = ""
   }
 
-  userData = {"action" : "register"};
+  userData = {};
 
   registerUser() {
     let client = new HttpClient();
-    client.fetch('http://localhost:8080', {
+    client.fetch('http://localhost:8080/register', {
       'method': "POST",
       'body': json(this.userData)
     })
       .then(response => response.json())
       .then(data => {
-        if (data.response == "successful") {
+        if (data.response === "successful") {
           this.message = "Kasutaja loodud!";
         }
       });

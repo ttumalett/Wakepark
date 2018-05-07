@@ -8,15 +8,25 @@ import idk0071.ttu.user.User;
 import idk0071.ttu.user.UserRepository;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.List;
 
+@Service
 public class ReservationService {
 
-    public static String addReservation(JSONObject request, ReservationRepository reservationRepository,
-                                        TrackRepository trackRepository, UserRepository userRepository)
+    @Autowired
+    private ReservationRepository reservationRepository;
+    @Autowired
+    private TrackRepository trackRepository;
+    @Autowired
+    private UserRepository userRepository;
+
+    public String addReservation(JSONObject request)
             throws JSONException {
         JSONObject answer = new JSONObject();
         String client = request.getString("client");
@@ -44,10 +54,14 @@ public class ReservationService {
         return answer.toString();
     }
 
-    public static LocalDateTime getRideStart(String startTime) {
+    public LocalDateTime getRideStart(String startTime) {
         LocalDateTime now = LocalDateTime.now();
         int startHour = Integer.valueOf(startTime.split(":")[0]);
         int startMinutes = Integer.valueOf(startTime.split(":")[1]);
         return LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), startHour, startMinutes);
+    }
+
+    public List<Reservation> findActiveReservations() {
+        return reservationRepository.findAll();
     }
 }

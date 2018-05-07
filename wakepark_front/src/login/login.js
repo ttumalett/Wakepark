@@ -8,30 +8,26 @@ export class login {
     this.aurelia = aurelia;
   }
 
-  userData = {"action" : "login"};
+  userData = {};
 
   login() {
     let client = new HttpClient();
-    client.fetch('http://localhost:8080', {
+    client.fetch('http://localhost:8080/login', {
       'method': "POST",
       'body': json(this.userData)
       })
       .then(response => response.json())
       .then(data => {
-        this.loggingin(data)
+        this.selectView(data)
       });
     document.getElementById("form1").reset();
   }
 
-  loggingin(data) {
-    if (data.response == "successful") {
-      console.log(data.status);
-      if (data.status == "0") {
-        console.log(data.status);
-        console.log("töötaja");
+  selectView(data) {
+    if (data.response === "successful") {
+      if (data.status === 0) {
         this.aurelia.setRoot('workerLoggedInApp');
       } else {
-        console.log("tava");
         this.aurelia.setRoot('userLoggedInApp');
       }
     } else {

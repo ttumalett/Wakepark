@@ -6,15 +6,24 @@ import idk0071.ttu.user.User;
 import idk0071.ttu.user.UserRepository;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserService {
-    public static String changeUserRides(JSONObject request, UserRepository userRepository,
-                                     RideCountRepository rideCountRepository) throws JSONException {
+
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private RideCountRepository rideCountRepository;
+
+    public String changeUserRides(String body) throws JSONException {
         JSONObject answer = new JSONObject();
-        String username = request.getString("user");
-        String newRides = request.getString("rides");
+        JSONObject userData = new JSONObject(body);
+        String username = userData.getString("user");
+        String newRides = userData.getString("rides");
         User user = userRepository.findByUsername(username);
         RideCount rideCount = rideCountRepository.findByClient(user);
         answer.put("ridecount", rideCount.getRideId());
@@ -24,10 +33,10 @@ public class UserService {
         return answer.toString();
     }
 
-    public static String getUserData(JSONObject request, UserRepository userRepository,
-                                     RideCountRepository rideCountRepository) throws JSONException {
+    public String getUserData(String body) throws JSONException {
+        JSONObject userData = new JSONObject(body);
         JSONObject answer = new JSONObject();
-        String username = request.getString("username");
+        String username = userData.getString("username");
         if (userRepository.existsByUsername(username)) {
             answer.put("response", "successful");
             User user = userRepository.findByUsername(username);
@@ -44,31 +53,29 @@ public class UserService {
     }
 
 
-    public static String login(JSONObject request, UserRepository userRepository) throws JSONException {
+    public String login(String body) throws JSONException {
+        JSONObject userData = new JSONObject(body);
         JSONObject answer = new JSONObject();
-        String username = request.getString("username");
-        String password = request.getString("password");
-        if (userExists(username, password, userRepository)) {
+        String username = userData.getString("username");
+        String password = userData.getString("password");
+        if (userExists(username, password)) {
             answer.put("response", "successful");
-            answer.put("status", getUserStatus(username, userRepository));
+            answer.put("status", getUserStatus(username));
         } else {
             answer.put("response", "unsuccessful");
         }
         return answer.toString();
     }
 
-    public static boolean userExists(String username, String password, UserRepository userRepository) {
+    public boolean userExists(String username, String password) {
         if (userRepository.existsByUsername(username)) {
             User user = userRepository.findByUsername(username);
-            if (user == null) {
-                return false;
-            }
-            return user.getPassword().equals(password);
+            return user != null && user.getPassword().equals(password);
         }
         return false;
     }
 
-    public static int getUserStatus(String username, UserRepository userRepository) {
+    public int getUserStatus(String username) {
         User user = userRepository.findByUsername(username);
         if (user==null) {
             return 0;
@@ -76,8 +83,8 @@ public class UserService {
         return user.getStatus();
     }
 
-    public static String register(JSONObject request, UserRepository userRepository,
-                                  RideCountRepository rideCountRepository) throws JSONException {
+    public String register(String body) throws JSONException {
+        JSONObject request = new JSONObject(body);
         JSONObject answer = new JSONObject();
         String firstName = request.getString("firstName");
         String userRides = request.getString("rides");
@@ -86,7 +93,7 @@ public class UserService {
         String password = request.getString("password");
         String email = request.getString("email");
         String phoneNr = request.getString("phoneNr");
-        if (!usernameTaken(username, userRepository)) {
+        if (!usernameTaken(username)) {
             User newUser = new User();
             newUser.setStatus(1);
             newUser.setFirstName(firstName);
@@ -95,11 +102,11 @@ public class UserService {
             newUser.setPassword(password);
             newUser.setEmail(email);
             newUser.setPhoneNr(phoneNr);
-            addUser(newUser, userRepository);
+            addUser(newUser);
             RideCount rideCount = new RideCount();
             rideCount.setClient(newUser);
             rideCount.setRidesLeft(Integer.valueOf(userRides));
-            addRideCount(rideCount, rideCountRepository);
+            addRideCount(rideCount);
             answer.put("response", "successful");
         } else {
             answer.put("response", "unsuccessful");
@@ -107,15 +114,15 @@ public class UserService {
         return answer.toString();
     }
 
-    public static User addUser(User user, UserRepository userRepository) {
-        return userRepository.save(user);
+    private void addUser(User user) {
+        userRepository.save(user);
     }
 
-    public static RideCount addRideCount(RideCount rideCount, RideCountRepository rideCountRepository) {
-        return rideCountRepository.save(rideCount);
+    private void addRideCount(RideCount rideCount) {
+        rideCountRepository.save(rideCount);
     }
 
-    public static boolean usernameTaken(String username, UserRepository userRepository) {
+    public boolean usernameTaken(String username) {
         List<User> users = userRepository.findAll();
         if (users == null) {
             return false;
