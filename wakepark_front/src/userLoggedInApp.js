@@ -3,7 +3,6 @@ import {inject, Aurelia} from 'aurelia-framework';
 @inject(Aurelia)
 export class userLoggedInApp {
   constructor(aurelia) {
-    console.log("tere");
     this.aurelia = aurelia;
   }
 
@@ -11,14 +10,15 @@ export class userLoggedInApp {
     this.router = router;
     config.title = "Wakepark";
     config.map([
-        {route: 'userSettings', name: 'userSettings', moduleId: 'userSettings/userSettings', title: 'Minu seaded', nav: true},
+        {route: 'userSettings', name: 'userSettings', moduleId: 'userSettings/userSettings', title: 'Profiil', nav: true},
         {route: 'contacts', name: 'contacts', moduleId: 'contacts/contacts', title: 'Kontaktid', nav: true},
-        {route: 'info', name: 'info', moduleId: 'info/info', title: 'Info', nav: true},
-        {route: ['', 'login', 'userHome'], name: 'userHome', moduleId: 'userHome/userHome', title: 'Broneeri', nav: true},
-        {route: 'logout', redirect: 'info'}
+        {route: 'info', name: 'info', moduleId: 'info/info', title: 'Hinnakiri', nav: true},
+        {route: ['', 'login', 'userHome', 'logout'], name: 'userHome', moduleId: 'userHome/userHome', title: 'Broneeri', nav: true},
+        {route: 'logout', redirect: 'userHome'}
       ]
     )
   }
+
   logout() {
     sessionStorage.setItem("currentUser", null);
     sessionStorage.setItem("currentUserStatus", null);

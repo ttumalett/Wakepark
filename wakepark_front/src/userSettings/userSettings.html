@@ -1,28 +1,32 @@
 <template>
   <div class="heading" style="width: 800px;">
-    <h2 class="contact">Muuda oma profiili</h2>
+    <h2 class="contact">MINU ANDMED</h2>
   </div>
   <div class="profile-change-container" style="height: 400px;">
     <form class="profile-change-form">
       <p>
+        <label>Kasutajanimi</label>
+        <label>${username}</label>
+      </p>
+      <p>
+        <label>Sõidukordade arv</label>
+        <label>${ridesLeft}</label>
+      </p>
+      <p>
         <label>Eesnimi</label>
-        <input type="text">
+        <input type="text" value=${firstName}>
       </p>
       <p>
         <label>Perekonnanimi</label>
-        <input type="text">
-      </p>
-      <p>
-        <label>Kasutajanimi</label>
-        <input type="text">
+        <input type="text" value=${lastName}>
       </p>
       <p>
         <label>E-mail</label>
-        <input type="text">
+        <input type="text" value=${email}>
       </p>
       <p>
         <label>Telefon</label>
-        <input type="text">
+        <input type="text" value=${phoneNr}>
       </p>
       <p>
         <button type="submit" class="profile-change-button">Muuda andmeid</button>
@@ -32,15 +36,15 @@
       <form class="password-change-form">
         <p>
           <label>Vana parool</label>
-          <input type="text">
+          <input type="password">
         </p>
         <p>
           <label>Uus parool</label>
-          <input type="text">
+          <input type="password">
         </p>
         <p>
           <label>Korda uut parooli</label>
-          <input type="text">
+          <input type="password">
         </p>
         <p>
           <button type="submit" class="profile-change-button">Muuda parooli</button>

@@ -26,8 +26,8 @@ public class ReservationService {
     @Autowired
     private UserRepository userRepository;
 
-    public String addReservation(JSONObject request)
-            throws JSONException {
+    public String addReservation(String body, RideCountService rideCountService) throws JSONException {
+        JSONObject request = new JSONObject(body);
         JSONObject answer = new JSONObject();
         String client = request.getString("client");
         String startTime = request.getString("startTime");
@@ -37,10 +37,11 @@ public class ReservationService {
         Track track = trackRepository.findByName(trackName);
         if (!reservationRepository.existsByReservationStartAndTrack(rideStart, track)) {
             Reservation reservation = new Reservation();
-            if (request.getString("action").equals("addReservation")) {
-                User user = userRepository.findById(Integer.valueOf(client));
+            if (request.getString("action").equals("addReservationClient") || !client.contains(" ")) {
+                User user = userRepository.findByUsername(client);
                 reservation.setClient(user);
                 reservation.setClientName(user.getFirstName() + " " + user.getLastName());
+                rideCountService.decrementUserRideCount(user);
             } else {
                 reservation.setClientName(client);
             }
@@ -63,6 +64,6 @@ public class ReservationService {
     }
 
     public List<Reservation> findActiveReservations() {
-        return reservationRepository.findAll();
+        return reservationRepository.findByReservationStartIsBefore(LocalDateTime.now());
     }
 }

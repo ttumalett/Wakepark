@@ -10,19 +10,22 @@
         <div class="track">
           <div class="trackName" style="color: #37baff;">Live Fearless</div>
           <div class="queue">
-            <div repeat.for="ride of liveFearlessReservations" class="rider">${ride.client.firstName}</div>
+            <div repeat.for="ride of liveFearlessReservations" class="rider">${ride.clientName}
+              ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
           </div>
         </div>
         <div class="track">
           <div class="trackName" style="color: #ff1212;">Estrella</div>
           <div class="queue">
-            <div repeat.for="estrella of estrellaReservations" class="rider">${estrella.client.firstName}</div>
+            <div repeat.for="ride of estrellaReservations" class="rider">${ride.clientName}
+              ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
           </div>
         </div>
         <div class="track">
           <div class="trackName" style="color: #000000;">Red Bull</div>
           <div class="queue">
-            <div repeat.for="redbull of redBullReservations" class="rider">${redbull.client.firstName}</div>
+            <div repeat.for="ride of redBullReservations" class="rider">${ride.clientName}
+              ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
           </div>
         </div>
       </div>
@@ -39,8 +42,8 @@
       </div>
       <div style="padding-top: 10px;">
         <select value.bind="reservationData.startTime" class="selectTime" id="selectTime">
-          <option repeat.for="rideTime of times" value.bind="rideTime.start">
-            ${rideTime.start}
+          <option repeat.for="rideTime of times" value.bind="rideTime">
+            ${rideTime}
           </option>
         </select>
       </div>

@@ -15,16 +15,13 @@ public class RestApiController {
     private UserService userService;
     @Autowired
     private ReservationService reservationService;
+    @Autowired
+    private RideCountService rideCountService;
 
     @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST, value = "")
-    public String restService(@RequestBody String request) throws JSONException {
-        JSONObject requestJson = new JSONObject(request);
-        String action = requestJson.getString("action");
-        if (action.equals("addReservation") || action.equals("addReservationWorker")) {
-            return reservationService.addReservation(requestJson);
-        }
-        return "proov";
+    @RequestMapping(method = RequestMethod.POST, value = "/addReservation")
+    public String addReservationClient(@RequestBody String body) throws JSONException {
+        return reservationService.addReservation(body, rideCountService);
     }
 
     @CrossOrigin
@@ -42,7 +39,7 @@ public class RestApiController {
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, value = "/register")
     public String registerUser(@RequestBody String body) throws JSONException {
-        return userService.register(body);
+        return userService.register(body, rideCountService);
     }
 
     @CrossOrigin

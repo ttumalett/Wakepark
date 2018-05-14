@@ -28,6 +28,7 @@ public class UserService {
         RideCount rideCount = rideCountRepository.findByClient(user);
         answer.put("ridecount", rideCount.getRideId());
         rideCount.setRidesLeft(Integer.valueOf(newRides));
+        rideCountRepository.save(rideCount);
         answer.put("response", "successful");
         answer.put("newRides", newRides);
         return answer.toString();
@@ -84,7 +85,7 @@ public class UserService {
         return user.getStatus();
     }
 
-    public String register(String body) throws JSONException {
+    public String register(String body, RideCountService rideCountService) throws JSONException {
         JSONObject request = new JSONObject(body);
         JSONObject answer = new JSONObject();
         String firstName = request.getString("firstName");
@@ -104,10 +105,7 @@ public class UserService {
             newUser.setEmail(email);
             newUser.setPhoneNr(phoneNr);
             addUser(newUser);
-            RideCount rideCount = new RideCount();
-            rideCount.setClient(newUser);
-            rideCount.setRidesLeft(Integer.valueOf(userRides));
-            addRideCount(rideCount);
+            rideCountService.addRideCount(newUser, userRides);
             answer.put("response", "successful");
         } else {
             answer.put("response", "unsuccessful");
@@ -117,10 +115,6 @@ public class UserService {
 
     private void addUser(User user) {
         userRepository.save(user);
-    }
-
-    private void addRideCount(RideCount rideCount) {
-        rideCountRepository.save(rideCount);
     }
 
     public boolean usernameTaken(String username) {

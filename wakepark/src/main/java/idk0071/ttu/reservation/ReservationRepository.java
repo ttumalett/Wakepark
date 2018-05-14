@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface ReservationRepository extends CrudRepository<Reservation, Long> {
     boolean existsByReservationStartAndTrack(LocalDateTime localDateTime, Track track);
-    List<Reservation> findAll();
+    List<Reservation> findAllByOrderByReservationStartAsc();
+    List<Reservation> findByReservationStartIsBefore(LocalDateTime now);
     List<Reservation> findReservationByReservationStartGreaterThanEqual(LocalDateTime now);
 }
