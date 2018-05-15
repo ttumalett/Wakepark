@@ -8,7 +8,7 @@ export class App {
     config.map([
       {route: ['login', 'logout'], name: 'login', moduleId: 'login/login', title: "Logi sisse", nav: true},
       {route: 'contacts', name: 'contacts', moduleId: 'contacts/contacts', title: 'Kontaktid', nav: true},
-      {route: 'info', name: 'info', moduleId: 'info/info', title: 'Hinnakiri', nav: true},
+      {route: 'info', name: 'info', moduleId: 'info/info', title: 'Info', nav: true},
       {route: ['', 'index'], name: 'home', moduleId: 'home/index', title: "Avaleht", nav: true}
       ]
     )

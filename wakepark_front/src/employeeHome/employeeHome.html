@@ -1,75 +1,77 @@
 <template>
-  <div class="heading">
-    <h2 class="front">ESTRELLA WAKEPARK
-    </h2>
-  </div>
-  <div class="queue-container">
-    <div class="tracks-container">
-      <div class="tracks">
-        <div class="track">
-          <div class="trackName" style="color: #37baff;">Live Fearless</div>
-          <div class="queue">
-            <div repeat.for="ride of liveFearlessReservations" class="rider">
-              <button click.delegate="deleteReservation(ride)">X</button>
-              ${ride.clientName}
-              ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
-          </div>
-          <div>
-            <form name="reserveRide" style="float: left;" submit.delegate="reserveClientLiveFearless()">
-              <input type="text" class="riderInput" value.bind="reservationLiveFearless.client" placeholder="Lisa sõitja"/>
-            <div style="padding-top: 10px; float: right; margin-left: 10px;">
-              <select style="width: 60px;" value.bind="reservationLiveFearless.startTime">
-                <option repeat.for="rideTime of times" value.bind="rideTime">
-                  ${rideTime}
-                </option>
-              </select>
+  <div style="height: 100%; width: 100%;" class="animated fadeInDown">
+    <div class="heading">
+      <h2 class="front">ESTRELLA WAKEPARK
+      </h2>
+    </div>
+    <div class="queue-container">
+      <div class="tracks-container">
+        <div class="tracks">
+          <div class="track">
+            <div class="trackName" style="color: #37baff;">Live Fearless</div>
+            <div class="queue">
+              <div repeat.for="ride of liveFearlessReservations" class="rider">
+                <button click.delegate="deleteReservation(ride)">X</button>
+                ${ride.clientName}
+                ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
             </div>
-            </form>
-          </div>
-        </div>
-        <div class="track">
-          <div class="trackName" style="color: #ff1212;">Estrella</div>
-          <div class="queue">
-            <div repeat.for="ride of estrellaReservations" class="rider">
-              <button click.delegate="deleteReservation(ride)">X</button>
-              ${ride.clientName}
-              ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
-          </div>
-          <div>
-            <form name="reserveRide" style="float: left;" submit.delegate="reserveClientEstrella()">
-              <input type="text" class="riderInput" value.bind="reservationEstrella.client" placeholder="Lisa sõitja"/>
-            <div style="padding-top: 10px; float: right; margin-left: 10px;">
-              <select value.bind="reservationEstrella.startTime" style="width: 60px;">
-                <option repeat.for="rideTime of times" value.bind="rideTime">
-                  ${rideTime}
-                </option>
-              </select>
+            <div>
+              <form name="reserveRide" style="float: left;" submit.delegate="reserveClientLiveFearless()">
+                <input type="text" class="riderInput" value.bind="reservationLiveFearless.client" placeholder="Lisa sõitja"/>
+              <div style="padding-top: 10px; float: right; margin-left: 10px;">
+                <select style="width: 60px;" value.bind="reservationLiveFearless.startTime">
+                  <option repeat.for="rideTime of times" value.bind="rideTime">
+                    ${rideTime}
+                  </option>
+                </select>
+              </div>
+              </form>
             </div>
-            </form>
           </div>
-        </div>
-        <div class="track">
-          <div class="trackName" style="color: #000000;">Red Bull</div>
-          <div class="queue">
-            <div repeat.for="ride of redBullReservations" class="rider">
-              <button click.delegate="deleteReservation(ride)">X</button>
-              ${ride.clientName}
-              ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
-          </div>
-          <div>
-            <form name="reserveRide" style="float: left;" submit.delegate="reserveClientRedBull()">
-              <input type="text" class="riderInput" value.bind="reservationRedBull.client" placeholder="Lisa sõitja"/>
-            <div style="padding-top: 10px; float: right; margin-left: 10px;">
-              <select style="width: 60px;" value.bind="reservationRedBull.startTime">
-                <option repeat.for="rideTime of times" value.bind="rideTime">
-                  ${rideTime}
-                </option>
-              </select>
+          <div class="track">
+            <div class="trackName" style="color: #ff1212;">Estrella</div>
+            <div class="queue">
+              <div repeat.for="ride of estrellaReservations" class="rider">
+                <button click.delegate="deleteReservation(ride)">X</button>
+                ${ride.clientName}
+                ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
             </div>
-            </form>
+            <div>
+              <form name="reserveRide" style="float: left;" submit.delegate="reserveClientEstrella()">
+                <input type="text" class="riderInput" value.bind="reservationEstrella.client" placeholder="Lisa sõitja"/>
+              <div style="padding-top: 10px; float: right; margin-left: 10px;">
+                <select value.bind="reservationEstrella.startTime" style="width: 60px;">
+                  <option repeat.for="rideTime of times" value.bind="rideTime">
+                    ${rideTime}
+                  </option>
+                </select>
+              </div>
+              </form>
+            </div>
           </div>
+          <div class="track">
+            <div class="trackName" style="color: #000000;">Red Bull</div>
+            <div class="queue">
+              <div repeat.for="ride of redBullReservations" class="rider">
+                <button click.delegate="deleteReservation(ride)">X</button>
+                ${ride.clientName}
+                ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
+            </div>
+            <div>
+              <form name="reserveRide" style="float: left;" submit.delegate="reserveClientRedBull()">
+                <input type="text" class="riderInput" value.bind="reservationRedBull.client" placeholder="Lisa sõitja"/>
+              <div style="padding-top: 10px; float: right; margin-left: 10px;">
+                <select style="width: 60px;" value.bind="reservationRedBull.startTime">
+                  <option repeat.for="rideTime of times" value.bind="rideTime">
+                    ${rideTime}
+                  </option>
+                </select>
+              </div>
+              </form>
+            </div>
+          </div>
+          ${message}
         </div>
-        ${message}
       </div>
     </div>
   </div>

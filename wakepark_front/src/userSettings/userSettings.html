@@ -1,57 +1,59 @@
 <template>
-  <div class="heading" style="width: 800px;">
-    <h2 class="contact">MINU ANDMED</h2>
-  </div>
-  <div class="profile-change-container" style="height: 400px;">
-    <form class="profile-change-form">
-      <p>
-        <label>Kasutajanimi</label>
-        <label>${username}</label>
-      </p>
-      <p>
-        <label>Sõidukordade arv</label>
-        <label>${ridesLeft}</label>
-      </p>
-      <p>
-        <label>Eesnimi</label>
-        <input type="text" value=${firstName} value.bind="changeableData.firstName" required/>
-      </p>
-      <p>
-        <label>Perekonnanimi</label>
-        <input type="text" value=${lastName} value.bind="changeableData.lastName" required/>
-      </p>
-      <p>
-        <label>E-mail</label>
-        <input type="email" value=${email} value.bind="changeableData.email" required/>
-      </p>
-      <p>
-        <label>Telefon</label>
-        <input type="number" value=${phoneNr} value.bind="changeableData.phoneNr" required/>
-      </p>
-      <p>
-        <button type="submit" class="profile-change-button" click.delegate="changeUserData()">Muuda andmeid</button>
-      </p>
-      <p>${userDataMessage}</p>
-    </form>
-    <div class="contact-text-container">
-      <form class="password-change-form" id="passwordChangeForm" submit.delegate="changeUserPassword()">
+  <div style="height: 100%; width: 100%;" class="animated fadeInDown">
+    <div class="heading" style="width: 800px;">
+      <h2 class="contact">MINU ANDMED</h2>
+    </div>
+    <div class="profile-change-container" style="height: 400px;">
+      <form class="profile-change-form">
         <p>
-          <label>Vana parool</label>
-          <input type="password" value.bind="changeablePassword.oldPassword" required/>
+          <label>Kasutajanimi</label>
+          <label>${username}</label>
         </p>
         <p>
-          <label>Uus parool</label>
-          <input type="password" value.bind="changeablePassword.newPassword" required/>
+          <label>Sõidukordade arv</label>
+          <label>${ridesLeft}</label>
         </p>
         <p>
-          <label>Korda uut parooli</label>
-          <input type="password" value.bind="changeablePassword.newPassword2" required/>
+          <label>Eesnimi</label>
+          <input type="text" value=${firstName} value.bind="changeableData.firstName" required/>
         </p>
         <p>
-          <button type="submit" class="profile-change-button">Muuda parooli</button>
+          <label>Perekonnanimi</label>
+          <input type="text" value=${lastName} value.bind="changeableData.lastName" required/>
         </p>
-        <p>${passwordMessage}</p>
+        <p>
+          <label>E-mail</label>
+          <input type="email" value=${email} value.bind="changeableData.email" required/>
+        </p>
+        <p>
+          <label>Telefon</label>
+          <input type="number" value=${phoneNr} value.bind="changeableData.phoneNr" required/>
+        </p>
+        <p>
+          <button type="submit" class="profile-change-button" click.delegate="changeUserData()">Muuda andmeid</button>
+        </p>
+        <p>${userDataMessage}</p>
       </form>
+      <div class="contact-text-container">
+        <form class="password-change-form" id="passwordChangeForm" submit.delegate="changeUserPassword()">
+          <p>
+            <label>Vana parool</label>
+            <input type="password" value.bind="changeablePassword.oldPassword" required/>
+          </p>
+          <p>
+            <label>Uus parool</label>
+            <input type="password" value.bind="changeablePassword.newPassword" required/>
+          </p>
+          <p>
+            <label>Korda uut parooli</label>
+            <input type="password" value.bind="changeablePassword.newPassword2" required/>
+          </p>
+          <p>
+            <button type="submit" class="profile-change-button">Muuda parooli</button>
+          </p>
+          <p>${passwordMessage}</p>
+        </form>
+      </div>
     </div>
   </div>
 </template>

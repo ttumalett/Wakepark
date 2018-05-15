@@ -1,9 +1,10 @@
 body {
     background: url('../img/DSC04121-1.jpg') no-repeat;
     background-size: cover;
-	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-	font-size: 17px;
-	font-weight: 400; 
+    background-attachment: fixed;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	  font-size: 17px;
+	  font-weight: 400;
     margin: 0;
     padding: 0;
 }
@@ -273,10 +274,12 @@ h2.contact {
 }
 
 .info-header {
-  width: 400px;
+  width: 800px;
   height: 80px;
   float: left;
   background: rgba(255, 255, 255, 0.85);
+  position: absolute;
+  top: 150px;
 }
 
 .info-header-text {
@@ -285,28 +288,53 @@ h2.contact {
   text-align: center;
   position: relative;
   top: 20%;
-  transform: translateY(-60%);
+  transform: translateY(-50%);
 }
 
 .info-container {
   background-color: rgba(26, 45, 75, 0.97);
-  float: left;
   position: absolute;
+  display: flex;
+  top: 250px;
   padding: 30px;
   text-align: center;
-  width: 300px;
-  height: 230px;
-  margin-left: 20px;
-  border-style: solid;
-  border-color: white;
-  border-width: 1px;
+  width: 800px;
+  height: 270px;
+  border: solid 1px white;
 }
+
+.info-container-left {
+  width: 400px;
+  height: 270px;
+  border-right: 1px solid #5d77a0;
+  padding: 0 10px 0 10px;
+}
+
+.info-container-right {
+  width: 400px;
+  height: 270px;
+  padding: 0 10px 0 10px;
+}
+
+.info-text-header {
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  line-height: 2;
+  padding: 5px;
+  background-color: rgba(16, 31, 56, 0.97);
+  width: 340px;
+  margin: 0 auto;
+
+}
+
 .info-text {
   color: white;
-  font-size: 18px;
-  text-align: left;
+  font-size: 14px;
+  text-align: center;
   line-height: 2;
-  margin: 0;
+  margin: 0 auto;;
+  padding: 10px;
 }
 
 .register-banner {
@@ -589,28 +617,108 @@ label {
 }
 
 .logout-button {
+  width: 50px;
+  height: 45px;
   border: none;
   background: rgba(255, 255, 255, 0);
   color: white;
   float: right;
+  margin-right: 20px;
+  position: absolute;
 }
 
 .logout-button:hover {
   cursor: pointer;
 }
 
-.login-name-box {
-  width: 250px;
-  height: 40px;
-  background: rgb(26, 45, 75, 0.5);
-  float: left;
-  border-radius: 0 0 10px 0;
+.info-flex {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+
 }
 
-.login-name {
-  color: white;
-  font-weight: 100;
-  text-align: center;
-  padding: 5px;
-  margin: 5px;
+.facebook-feed {
+  background: white;
+  border: solid 20px rgb(36, 58, 93);
+  border-radius: 3px;
+  position: absolute;
+  top: 1700px;
+  margin-bottom: 20px;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+@-webkit-keyframes fadeInDownBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0);
+    transform: translate3d(0, -2000px, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInDownBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0);
+    transform: translate3d(0, -2000px, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInDownBig {
+  -webkit-animation-name: fadeInDownBig;
+  animation-name: fadeInDownBig;
 }

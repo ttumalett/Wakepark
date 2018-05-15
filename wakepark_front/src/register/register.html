@@ -1,32 +1,34 @@
 <template>
-  <div class="register-banner">
-    <div class="register-text">REGISTREERI <br> KASUTAJA </div>
-  </div>
-  <div class="register-container">
-    <form id="registerForm" class="register-form" submit.delegate="registerUser()">
-      <div style="padding-top: 10px;">
-        <input type="text" id="firstname" name="firstname" class="form-input" value.bind="userData.firstName" placeholder="Eesnimi"  required/>
-      </div>
-      <div class="form-group">
-        <input type="text" id="surname" name="surname" class="form-input" value.bind="userData.lastName" placeholder="Perekonnanimi"  required/>
-      </div>
-      <div class="form-group">
-        <input type="text" id="username" name="username" class="form-input" value.bind="userData.username" placeholder="Kasutajanimi"  required/>
-      </div>
-      <div class="form-group">
-        <input type="text" id="password_reg" name="password_reg" class="form-input" value.bind="userData.password" placeholder="Parool"  required/>
-      </div>
-      <div class="form-group">
-        <input type="email" id="email" name="email" class="form-input" value.bind="userData.email" placeholder="E-mail"  required/>
-      </div>
-      <div class="form-group">
-        <input type="number" id="phonenumber" name="phonenumber" class="form-input" value.bind="userData.phoneNr" placeholder="Telefoninumber"  required/>
-      </div>
-      <div class="form-group">
-        <input type="number" id="rides" name="rides" class="form-input" placeholder="Sõidukorrad" value.bind="userData.rides"required/>
-      </div>
-      <button type="submit" class="submit-button">Registreeri</button>
-      <p class="confirmation">${message}</p>
-    </form>
+  <div style="height: 100%; width: 100%;" class="animated fadeInDown">
+    <div class="register-banner">
+      <div class="register-text">REGISTREERI <br> KASUTAJA </div>
+    </div>
+    <div class="register-container">
+      <form id="registerForm" class="register-form" submit.delegate="registerUser()">
+        <div style="padding-top: 10px;">
+          <input type="text" id="firstname" name="firstname" class="form-input" value.bind="userData.firstName" placeholder="Eesnimi"  required/>
+        </div>
+        <div class="form-group">
+          <input type="text" id="surname" name="surname" class="form-input" value.bind="userData.lastName" placeholder="Perekonnanimi"  required/>
+        </div>
+        <div class="form-group">
+          <input type="text" id="username" name="username" class="form-input" value.bind="userData.username" placeholder="Kasutajanimi"  required/>
+        </div>
+        <div class="form-group">
+          <input type="text" id="password_reg" name="password_reg" class="form-input" value.bind="userData.password" placeholder="Parool"  required/>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" class="form-input" value.bind="userData.email" placeholder="E-mail"  required/>
+        </div>
+        <div class="form-group">
+          <input type="number" id="phonenumber" name="phonenumber" class="form-input" value.bind="userData.phoneNr" placeholder="Telefoninumber"  required/>
+        </div>
+        <div class="form-group">
+          <input type="number" id="rides" name="rides" class="form-input" placeholder="Sõidukorrad" value.bind="userData.rides"required/>
+        </div>
+        <button type="submit" class="submit-button">Registreeri</button>
+        <p class="confirmation">${message}</p>
+      </form>
+    </div>
   </div>
 </template>

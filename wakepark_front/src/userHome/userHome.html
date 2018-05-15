@@ -1,53 +1,55 @@
 <template>
-  <div class="heading">
-    <h2 class="front">ESTRELLA WAKEPARK
-    </h2>
-  </div>
-  <div class="queue-container">
-    <div class="tracks-container">
-      <div class="tracks">
-        <div class="track">
-          <div class="trackName" style="color: #37baff;">Live Fearless</div>
-          <div class="queue">
-            <div repeat.for="ride of liveFearlessReservations" class="rider">${ride.clientName}
-              ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
+  <div style="height: 100%; width: 100%;" class="animated fadeInDown">
+    <div class="heading">
+      <h2 class="front">ESTRELLA WAKEPARK
+      </h2>
+    </div>
+    <div class="queue-container">
+      <div class="tracks-container">
+        <div class="tracks">
+          <div class="track">
+            <div class="trackName" style="color: #37baff;">Live Fearless</div>
+            <div class="queue">
+              <div repeat.for="ride of liveFearlessReservations" class="rider">${ride.clientName}
+                ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
+            </div>
           </div>
-        </div>
-        <div class="track">
-          <div class="trackName" style="color: #ff1212;">Estrella</div>
-          <div class="queue">
-            <div repeat.for="ride of estrellaReservations" class="rider">${ride.clientName}
-              ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
+          <div class="track">
+            <div class="trackName" style="color: #ff1212;">Estrella</div>
+            <div class="queue">
+              <div repeat.for="ride of estrellaReservations" class="rider">${ride.clientName}
+                ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
+            </div>
           </div>
-        </div>
-        <div class="track">
-          <div class="trackName" style="color: #000000;">Red Bull</div>
-          <div class="queue">
-            <div repeat.for="ride of redBullReservations" class="rider">${ride.clientName}
-              ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
+          <div class="track">
+            <div class="trackName" style="color: #000000;">Red Bull</div>
+            <div class="queue">
+              <div repeat.for="ride of redBullReservations" class="rider">${ride.clientName}
+                ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="user-register-container">
-    <form class="register-form" submit.delegate="reserveRide()">
-      <div>
-        <select value.bind="reservationData.trackName" class="selectTrack" id="selectTrack">
-          <option repeat.for="track of tracks" value.bind="track.name">
-            ${track.name}
-          </option>
-        </select>
-      </div>
-      <div style="padding-top: 10px;">
-        <select value.bind="reservationData.startTime" class="selectTime" id="selectTime">
-          <option repeat.for="rideTime of times" value.bind="rideTime">
-            ${rideTime}
-          </option>
-        </select>
-      </div>
-      <button class="register-button" style="margin-top: 15px;">Broneeri</button>
-    </form>
-    <p class="confirmation">${message}</p>
+    <div class="user-register-container">
+      <form class="register-form" submit.delegate="reserveRide()">
+        <div>
+          <select value.bind="reservationData.trackName" class="selectTrack" id="selectTrack">
+            <option repeat.for="track of tracks" value.bind="track.name">
+              ${track.name}
+            </option>
+          </select>
+        </div>
+        <div style="padding-top: 10px;">
+          <select value.bind="reservationData.startTime" class="selectTime" id="selectTime">
+            <option repeat.for="rideTime of times" value.bind="rideTime">
+              ${rideTime}
+            </option>
+          </select>
+        </div>
+        <button class="register-button" style="margin-top: 15px;">Broneeri</button>
+      </form>
+      <p class="confirmation">${message}</p>
+    </div>
   </div>
 </template>
