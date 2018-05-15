@@ -5,6 +5,8 @@ import {inject, Aurelia} from 'aurelia-framework';
 export class workerLoggedInApp {
   constructor(aurelia) {
     this.aurelia = aurelia;
+    this.name = sessionStorage.getItem("currentUser");
+
   }
 
   configureRouter(config, router) {
@@ -18,6 +20,11 @@ export class workerLoggedInApp {
       ]
     )
   }
+
+  activate() {
+    this.name = sessionStorage.getItem("currentUser");
+  }
+
   logout() {
     sessionStorage.setItem("currentUser", null);
     sessionStorage.setItem("currentUserStatus", null);

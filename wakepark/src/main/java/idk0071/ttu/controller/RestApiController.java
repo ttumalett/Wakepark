@@ -2,7 +2,6 @@ package idk0071.ttu.controller;
 
 import idk0071.ttu.reservation.Reservation;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,5 +51,17 @@ public class RestApiController {
     @RequestMapping(method = RequestMethod.GET, value="/reservations")
     public List<Reservation> getReservations() {
         return reservationService.findActiveReservations();
+    }
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST, value = "/changeUserData")
+    public String changeUserData(@RequestBody String body) throws JSONException {
+        return userService.changeUserData(body);
+    }
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST, value = "/changeUserPassword")
+    public String changeUserPassword(@RequestBody String body) throws JSONException {
+        return userService.changeUserPassword(body);
     }
 }

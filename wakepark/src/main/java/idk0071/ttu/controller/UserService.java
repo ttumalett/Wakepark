@@ -1,5 +1,7 @@
 package idk0071.ttu.controller;
 
+import idk0071.ttu.reservation.Reservation;
+import idk0071.ttu.reservation.ReservationRepository;
 import idk0071.ttu.ridecount.RideCount;
 import idk0071.ttu.ridecount.RideCountRepository;
 import idk0071.ttu.user.User;
@@ -18,6 +20,8 @@ public class UserService {
     private UserRepository userRepository;
     @Autowired
     private RideCountRepository rideCountRepository;
+    @Autowired
+    private ReservationRepository reservationRepository;
 
     public String changeUserRides(String body) throws JSONException {
         JSONObject answer = new JSONObject();
@@ -83,6 +87,47 @@ public class UserService {
             return 0;
         }
         return user.getStatus();
+    }
+
+    public String changeUserPassword(String body) throws JSONException {
+        JSONObject answer = new JSONObject();
+        JSONObject request = new JSONObject(body);
+        User user = userRepository.findByUsername(request.getString("username"));
+        if (user.getPassword().equals(request.getString("oldPassword"))
+                && request.getString("newPassword").equals(request.getString("newPassword2"))) {
+            user.setPassword(request.getString("newPassword"));
+            userRepository.save(user);
+            answer.put("response", "successful");
+        } else {
+            answer.put("response", "unsuccessful");
+        }
+        return answer.toString();
+    }
+
+    public String changeUserData(String body) throws JSONException {
+        JSONObject answer = new JSONObject();
+        try {
+            JSONObject request = new JSONObject(body);
+            User user = userRepository.findByUsername(request.getString("username"));
+            user.setFirstName(request.getString("firstName"));
+            user.setLastName(request.getString("lastName"));
+            user.setEmail(request.getString("email"));
+            user.setPhoneNr(request.getString("phoneNr"));
+            userRepository.save(user);
+            updateReservationUserData(user);
+            answer.put("response", "successful");
+        } catch (JSONException e) {
+            answer.put("response", "unsuccessful");
+        }
+        return answer.toString();
+    }
+
+    public void updateReservationUserData(User user) {
+        List<Reservation> userReservations = reservationRepository.findByClient(user);
+        for (Reservation reservation : userReservations) {
+            reservation.setClientName(user.getFirstName() + " " + user.getLastName());
+            reservationRepository.save(reservation);
+        }
     }
 
     public String register(String body, RideCountService rideCountService) throws JSONException {

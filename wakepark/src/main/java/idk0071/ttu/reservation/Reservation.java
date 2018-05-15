@@ -2,7 +2,6 @@ package idk0071.ttu.reservation;
 
 import idk0071.ttu.track.Track;
 import idk0071.ttu.user.User;
-import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

@@ -14,41 +14,43 @@
       </p>
       <p>
         <label>Eesnimi</label>
-        <input type="text" value=${firstName}>
+        <input type="text" value=${firstName} value.bind="changeableData.firstName" required/>
       </p>
       <p>
         <label>Perekonnanimi</label>
-        <input type="text" value=${lastName}>
+        <input type="text" value=${lastName} value.bind="changeableData.lastName" required/>
       </p>
       <p>
         <label>E-mail</label>
-        <input type="text" value=${email}>
+        <input type="email" value=${email} value.bind="changeableData.email" required/>
       </p>
       <p>
         <label>Telefon</label>
-        <input type="text" value=${phoneNr}>
+        <input type="number" value=${phoneNr} value.bind="changeableData.phoneNr" required/>
       </p>
       <p>
-        <button type="submit" class="profile-change-button">Muuda andmeid</button>
+        <button type="submit" class="profile-change-button" click.delegate="changeUserData()">Muuda andmeid</button>
       </p>
+      <p>${userDataMessage}</p>
     </form>
     <div class="contact-text-container">
-      <form class="password-change-form">
+      <form class="password-change-form" id="passwordChangeForm" submit.delegate="changeUserPassword()">
         <p>
           <label>Vana parool</label>
-          <input type="password">
+          <input type="password" value.bind="changeablePassword.oldPassword" required/>
         </p>
         <p>
           <label>Uus parool</label>
-          <input type="password">
+          <input type="password" value.bind="changeablePassword.newPassword" required/>
         </p>
         <p>
           <label>Korda uut parooli</label>
-          <input type="password">
+          <input type="password" value.bind="changeablePassword.newPassword2" required/>
         </p>
         <p>
           <button type="submit" class="profile-change-button">Muuda parooli</button>
         </p>
+        <p>${passwordMessage}</p>
       </form>
     </div>
   </div>

@@ -1,5 +1,6 @@
 <template>
   <require from="navbar.html"></require>
   <navbar router.bind="router"></navbar>
+  <div class="login-name-box"><p class="login-name">${name}<button class="logout-button" id="logout" click.delegate=logout()><i class="fas fa-sign-out-alt fa-2x"></i></button></p></div>
   <router-view></router-view>
 </template>

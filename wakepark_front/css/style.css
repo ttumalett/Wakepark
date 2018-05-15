@@ -589,16 +589,28 @@ label {
 }
 
 .logout-button {
-  width: 50px;
-  height: 45px;
   border: none;
   background: rgba(255, 255, 255, 0);
   color: white;
   float: right;
-  margin-right: 20px;
-  position: absolute;
 }
 
 .logout-button:hover {
   cursor: pointer;
+}
+
+.login-name-box {
+  width: 250px;
+  height: 40px;
+  background: rgb(26, 45, 75, 0.5);
+  float: left;
+  border-radius: 0 0 10px 0;
+}
+
+.login-name {
+  color: white;
+  font-weight: 100;
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
 }

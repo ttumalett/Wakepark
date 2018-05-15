@@ -12,9 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ReservationService {
@@ -60,10 +59,24 @@ public class ReservationService {
         LocalDateTime now = LocalDateTime.now();
         int startHour = Integer.valueOf(startTime.split(":")[0]);
         int startMinutes = Integer.valueOf(startTime.split(":")[1]);
-        return LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), startHour, startMinutes);
+        return LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), startHour, startMinutes, 0, 0);
     }
 
+    Comparator<Reservation> comparator = (left, right) -> {
+        if (left.getReservationStart().isBefore(right.getReservationStart())) {
+            return -1;
+        } if (left.getReservationStart().isAfter(right.getReservationStart())) {
+            return 1;
+        } else {
+            return 0;
+        }
+    };
+
     public List<Reservation> findActiveReservations() {
-        return reservationRepository.findByReservationStartIsBefore(LocalDateTime.now());
+        List<Reservation> reservations = reservationRepository.findAll();
+        LocalDateTime now = LocalDateTime.now().minusMinutes(5);
+        return reservations.stream()
+                        .filter(r -> r.getReservationStart().isAfter(now)).sorted(comparator).collect(Collectors.toList());
     }
+
 }
