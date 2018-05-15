@@ -1,18 +1,20 @@
 import {HttpClient, json} from 'aurelia-fetch-client';
 import {inject, Aurelia} from 'aurelia-framework';
+import config from 'config';
 
-@inject(Aurelia)
+@inject(Aurelia, config)
 export class login {
   constructor(aurelia) {
     this.message = "";
     this.aurelia = aurelia;
+    this.baseUrl = config.baseUrl;
   }
 
   userData = {};
 
   login() {
     let client = new HttpClient();
-    client.fetch('http://localhost:8080/login', {
+    client.fetch(this.baseUrl + '/login', {
       'method': "POST",
       'body': json(this.userData)
       })

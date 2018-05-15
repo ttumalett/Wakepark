@@ -3,6 +3,5 @@
 // export this object for simplicity. In a larger application, there
 // would be other, unrelated settings in the config as well.
 export default {
-  sessionUser: null,
-  sessionUserStatus: null
+  baseUrl: "http://localhost:8080"
 };

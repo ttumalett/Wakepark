@@ -1,5 +1,8 @@
 import {HttpClient, json} from "aurelia-fetch-client";
+import config from 'config';
+import {inject} from 'aurelia-framework';
 
+@inject(config)
 export class employeeHome {
 
   reservationList = [];
@@ -13,6 +16,7 @@ export class employeeHome {
   reservationRedBull = {"action" : "addReservationWorker"};
 
   constructor() {
+    this.baseUrl = config.baseUrl;
     this.name = sessionStorage.getItem("currentUser");
     this.message = "";
   }
@@ -21,7 +25,7 @@ export class employeeHome {
     let reservationData = {"clientName" : reservation.clientName, "hour" : reservation.reservationStart.hour,
       "minute" : reservation.reservationStart.minute, "track" : reservation.track.name};
     let client = new HttpClient();
-    client.fetch('http://localhost:8080/deleteReservation', {
+    client.fetch(this.baseUrl + '/deleteReservation', {
       'method': "POST",
       'body': json(reservationData)
     })
@@ -32,54 +36,33 @@ export class employeeHome {
   reserveClientEstrella() {
     this.reservationEstrella.trackName = 'Estrella';
     let client = new HttpClient();
-    client.fetch('http://localhost:8080/addReservation', {
+    client.fetch(this.baseUrl + '/addReservation', {
       'method': "POST",
       'body': json(this.reservationEstrella)
     })
-      .then(response => response.json())
-      .then(data => {
-        if (data.response === "successful") {
-          this.message = "Klient ajale registreeritud!";
-        } else {
-          this.message = "Ajale registreerumine ebaõnnestus!";
-        }
-      });
+      .then(response => response.json());
     document.getElementById("reserveRide").reset();
   }
 
   reserveClientLiveFearless() {
     this.reservationLiveFearless.trackName = 'Live Fearless';
     let client = new HttpClient();
-    client.fetch('http://localhost:8080/addReservation', {
+    client.fetch(this.baseUrl + '/addReservation', {
       'method': "POST",
       'body': json(this.reservationLiveFearless)
     })
-      .then(response => response.json())
-      .then(data => {
-        if (data.response === "successful") {
-          this.message = "Klient ajale registreeritud!";
-        } else {
-          this.message = "Ajale registreerumine ebaõnnestus!";
-        }
-      });
+      .then(response => response.json());
     document.getElementById("reserveRide").reset();
   }
 
   reserveClientRedBull() {
     this.reservationRedBull.trackName = 'Red Bull';
     let client = new HttpClient();
-    client.fetch('http://localhost:8080/addReservation', {
+    client.fetch(this.baseUrl + '/addReservation', {
       'method': "POST",
       'body': json(this.reservationRedBull)
     })
-      .then(response => response.json())
-      .then(data => {
-        if (data.response === "successful") {
-          this.message = "Klient ajale registreeritud!";
-        } else {
-          this.message = "Ajale registreerumine ebaõnnestus!";
-        }
-      });
+      .then(response => response.json());
     document.getElementById("reserveRide").reset();
   }
 
@@ -107,12 +90,12 @@ export class employeeHome {
 
   setTimeOptions() {
     let currentTime = new Date();
-    if (currentTime.getHours() >= 23) {
-      this.message = "Tänaseks on radadele registreerimine lõppenud!"
+    if (currentTime.getHours() >= 22) {
+      this.message = "Tänaseks on radadele registreerimine lõppenud!";
     }
-    let startOptionHour = (currentTime.getHours() < 12) ? 12 : currentTime.getHours();
-    let startOptionMinutes = this.findNextQuarter(currentTime.getMinutes());
-    for (let hour = startOptionHour; hour <= 22; hour++) {
+    let startOptionHour = (currentTime.getHours() < 12) ? 11 : currentTime.getHours();
+    let startOptionMinutes = (currentTime.getHours() < 12) ? 60 : this.findNextQuarter(currentTime.getMinutes());
+    for (let hour = startOptionHour; hour <= 21; hour++) {
       if (hour === startOptionHour) {
         this.setMinutesAndHours(hour, startOptionMinutes);
       } else {
@@ -124,7 +107,7 @@ export class employeeHome {
   activate() {
     this.setTimeOptions();
     let client = new HttpClient();
-    client.fetch('http://localhost:8080/reservations')
+    client.fetch(this.baseUrl + '/reservations')
       .then(response => response.json())
       .then(reservations => {
         this.reservationList = reservations;

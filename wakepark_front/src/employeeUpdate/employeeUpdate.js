@@ -1,9 +1,13 @@
 import {HttpClient, json} from "aurelia-fetch-client";
+import config from 'config';
+import {inject} from 'aurelia-framework';
 
+@inject(config)
 export class employeeUpdate {
   userData = {};
   changeRide = {};
   constructor() {
+    this.baseUrl = config.baseUrl;
     this.userName = "";
     this.firstName = "";
     this.lastName = "";
@@ -14,7 +18,7 @@ export class employeeUpdate {
   changeUserRides() {
     this.changeRide.user = this.userName;
     let client = new HttpClient();
-    client.fetch('http://localhost:8080/changeUserRides', {
+    client.fetch(this.baseUrl + '/changeUserRides', {
       'method': "POST",
       'body': json(this.changeRide)
     })
@@ -28,7 +32,7 @@ export class employeeUpdate {
   }
   searchUser() {
     let client = new HttpClient();
-    client.fetch('http://localhost:8080/getUserData', {
+    client.fetch(this.baseUrl + '/getUserData', {
       'method': "POST",
       'body': json(this.userData)
     })

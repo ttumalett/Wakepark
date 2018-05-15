@@ -1,5 +1,8 @@
 import {HttpClient, json} from "aurelia-fetch-client";
+import config from 'config';
+import {inject} from 'aurelia-framework';
 
+@inject(config)
 export class userSettings {
   constructor() {
     this.userDataMessage = "";
@@ -10,6 +13,7 @@ export class userSettings {
     this.email = "";
     this.phoneNr = "";
     this.ridesLeft = "";
+    this.baseUrl = config.baseUrl;
   }
 
   userData = {'username' : sessionStorage.getItem('currentUser')};
@@ -18,7 +22,7 @@ export class userSettings {
 
   changeUserData() {
     let client = new HttpClient();
-    client.fetch('http://localhost:8080/changeUserData', {
+    client.fetch(this.baseUrl + '/changeUserData', {
       'method': "POST",
       'body': json(this.changeableData)
     })
@@ -34,7 +38,7 @@ export class userSettings {
 
   changeUserPassword() {
     let client = new HttpClient();
-    client.fetch('http://localhost:8080/changeUserPassword', {
+    client.fetch(this.baseUrl + '/changeUserPassword', {
       'method': "POST",
       'body': json(this.changeablePassword)
     })
@@ -51,7 +55,7 @@ export class userSettings {
 
   activate() {
     let client = new HttpClient();
-    client.fetch('http://localhost:8080/getUserData', {
+    client.fetch(this.baseUrl + '/getUserData', {
       'method': "POST",
       'body': json(this.userData)
     })

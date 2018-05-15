@@ -1,5 +1,8 @@
 import {HttpClient, json} from 'aurelia-fetch-client'
+import config from 'config';
+import {inject} from 'aurelia-framework';
 
+@inject(config)
 export class Home {
 
   reservationList = [];
@@ -8,11 +11,12 @@ export class Home {
   liveFearlessReservations = [];
 
   constructor() {
+    this.baseUrl = config.baseUrl;
   }
 
   activate() {
     let client = new HttpClient();
-    client.fetch('http://localhost:8080/reservations')
+    client.fetch(this.baseUrl + '/reservations')
       .then(response => response.json())
       .then(reservations => {
         this.reservationList = reservations;

@@ -65,8 +65,10 @@ ul.nav-bar a.nav-button:hover {
 .queue-container{
   text-align: center;
   margin: 0 auto;
+  color: white;
   margin-bottom: 10px;
   padding-top: 0;
+  padding-bottom: 5px;
   background-color: rgb(26, 45, 75, 0.9);
   width: 800px;
   border-style: solid;
@@ -364,8 +366,8 @@ h2.contact {
   margin: 0 auto;
   padding-top: 0;
   background-color: rgb(26, 45, 75, 0.9);
-  height: 520px;
-  width: 400px;
+  height: 540px;
+  width: 350px;
   border-style: solid;
   border-width: 1px;
   border-top: none;
@@ -388,7 +390,7 @@ h2.contact {
   margin: 0 auto;
   padding-top: 0;
   background-color: rgb(26, 45, 75, 0.9);
-  height: 150px;
+  height: 200px;
   width: 200px;
   border-style: solid;
   border-width: 1px;
@@ -448,7 +450,6 @@ h2.contact {
   background: rgb(129, 227, 250, 0.8);
   color: white;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  background-color: rgb(45, 75, 0.9);
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -618,7 +619,7 @@ label {
 
 .logout-button {
   width: 50px;
-  height: 45px;
+  height: 27px;
   border: none;
   background: rgba(255, 255, 255, 0);
   color: white;
@@ -648,6 +649,38 @@ label {
   position: absolute;
   top: 1700px;
   margin-bottom: 20px;
+}
+
+.login-name-box {
+  width: 250px;
+  height: 40px;
+  background: rgb(26, 45, 75, 0.6);
+  margin-top: 0;
+  border-radius: 0 0 10px 0;
+}
+
+.login-name {
+  text-align: center;
+  padding: 8px;
+  margin: 5px;
+  color: white;
+  font-weight: 100;
+}
+
+.late-message {
+  height: 40px;
+}
+
+.change-message {
+  color: white;
+  margin: 0 auto;
+}
+
+.delete-ride {
+  background: #ff1212;
+  border-radius: 3px;
+  width: 22px;
+  height: 20px;
 }
 
 .animated {

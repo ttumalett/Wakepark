@@ -2,6 +2,8 @@ package idk0071.ttu.controller;
 
 import idk0071.ttu.reservation.Reservation;
 import idk0071.ttu.reservation.ReservationRepository;
+import idk0071.ttu.ridecount.RideCount;
+import idk0071.ttu.ridecount.RideCountRepository;
 import idk0071.ttu.track.Track;
 import idk0071.ttu.track.TrackRepository;
 import idk0071.ttu.user.User;
@@ -24,6 +26,8 @@ public class ReservationService {
     private TrackRepository trackRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private RideCountRepository rideCountRepository;
 
     public String addReservation(String body, RideCountService rideCountService) throws JSONException {
         JSONObject request = new JSONObject(body);
@@ -38,11 +42,17 @@ public class ReservationService {
             Reservation reservation = new Reservation();
             if (request.getString("action").equals("addReservationClient") || (!client.contains(" ") && userRepository.existsByUsername(client))) {
                 User user = userRepository.findByUsername(client);
+                RideCount ridesLeft = rideCountRepository.findByClient(user);
+                if (ridesLeft.getRidesLeft() <= 0) {
+                    answer.put("response", "unsuccessful");
+                    return answer.toString();
+                }
                 reservation.setClient(user);
                 reservation.setClientName(user.getFirstName() + " " + user.getLastName());
                 rideCountService.decrementUserRideCount(user);
             } else if (!client.contains(" ") && !userRepository.existsByUsername(client)) {
                 answer.put("response", "unsuccessful");
+                return answer.toString();
             } else {
                 reservation.setClientName(client);
             }
@@ -70,7 +80,7 @@ public class ReservationService {
                 LocalDateTime.of(current.getYear(), current.getMonth(), current.getDayOfMonth(), hour, minute, 0, 0);
         Reservation reservation = trackReservations.stream().filter(r -> r.getReservationStart().isEqual(check)).findFirst().get();
         if (reservation.getClient() != null
-                && reservation.getReservationStart().minusMinutes(30).isBefore(LocalDateTime.now())) {
+                && reservation.getReservationStart().minusMinutes(30).isAfter(LocalDateTime.now())) {
             rideCountService.incrementUserRideCount(reservation.getClient());
             answer.put("response", "successful");
         } else {

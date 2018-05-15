@@ -3,7 +3,7 @@
     <div class="heading" style="width: 800px;">
       <h2 class="contact">MINU ANDMED</h2>
     </div>
-    <div class="profile-change-container" style="height: 400px;">
+    <div class="profile-change-container" style="height: 430px;">
       <form class="profile-change-form">
         <p>
           <label>Kasutajanimi</label>
@@ -32,7 +32,7 @@
         <p>
           <button type="submit" class="profile-change-button" click.delegate="changeUserData()">Muuda andmeid</button>
         </p>
-        <p>${userDataMessage}</p>
+        <div style="margin-left: 150px; width: 170px;"><p class="change-message">${userDataMessage}</p></div>
       </form>
       <div class="contact-text-container">
         <form class="password-change-form" id="passwordChangeForm" submit.delegate="changeUserPassword()">
@@ -51,7 +51,7 @@
           <p>
             <button type="submit" class="profile-change-button">Muuda parooli</button>
           </p>
-          <p>${passwordMessage}</p>
+          <div style="margin-left: 165px; width: 170px;"><p class="change-message">${passwordMessage}</p></div>
         </form>
       </div>
     </div>

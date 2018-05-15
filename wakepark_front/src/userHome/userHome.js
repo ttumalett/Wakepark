@@ -1,5 +1,8 @@
 import {HttpClient, json} from 'aurelia-fetch-client';
+import config from 'config';
+import {inject} from 'aurelia-framework';
 
+@inject(config)
 export class userHome {
 
   reservationList = [];
@@ -10,6 +13,7 @@ export class userHome {
   constructor() {
     this.name = sessionStorage.getItem("currentUser");
     this.message = "";
+    this.baseUrl = config.baseUrl;
   }
 
   tracks = [
@@ -22,7 +26,7 @@ export class userHome {
 
   reserveRide() {
     let client = new HttpClient();
-    client.fetch('http://localhost:8080/addReservation', {
+    client.fetch(this.baseUrl + '/addReservation', {
       'method': "POST",
       'body': json(this.reservationData)
     })
@@ -62,10 +66,10 @@ export class userHome {
   setTimeOptions() {
     let currentTime = new Date();
     if (currentTime.getHours() >= 22) {
-      this.message = "Tänaseks on radadele registreerimine lõppenud!"
+      this.message = "Tänaseks on radadele registreerimine lõppenud!";
     }
-    let startOptionHour = (currentTime.getHours() < 12) ? 12 : currentTime.getHours();
-    let startOptionMinutes = this.findNextQuarter(currentTime.getMinutes());
+    let startOptionHour = (currentTime.getHours() < 12) ? 11 : currentTime.getHours();
+    let startOptionMinutes = (currentTime.getHours() < 12) ? 60 : this.findNextQuarter(currentTime.getMinutes());
     for (let hour = startOptionHour; hour <= 21; hour++) {
       if (hour === startOptionHour) {
         this.setMinutesAndHours(hour, startOptionMinutes);
@@ -78,12 +82,10 @@ export class userHome {
   activate() {
     this.setTimeOptions();
     let client = new HttpClient();
-    client.fetch('http://localhost:8080/reservations')
+    client.fetch(this.baseUrl + '/reservations')
       .then(response => response.json())
       .then(reservations => {
-        this.reservationList = reservations.sort(function(a, b){
-          return a.reservationStart.minute - b.reservationStart.minute;
-        });
+        this.reservationList = reservations;
         for (let i = 0; i < this.reservationList.length; i++) {
           let reservation = this.reservationList[i];
           if (reservation.track.name === 'Estrella') {
