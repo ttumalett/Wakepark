@@ -18,6 +18,12 @@ public class RideCountService {
         rideCountRepository.save(rideCount);
     }
 
+    public void incrementUserRideCount(User user) {
+        RideCount rideCount = rideCountRepository.findByClient(user);
+        rideCount.setRidesLeft(rideCount.getRidesLeft() + 1);
+        rideCountRepository.save(rideCount);
+    }
+
     public void addRideCount(User newUser, String userRides) {
         RideCount rideCount = new RideCount();
         rideCount.setClient(newUser);

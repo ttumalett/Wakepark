@@ -17,6 +17,18 @@ export class employeeHome {
     this.message = "";
   }
 
+  deleteReservation(reservation) {
+    let reservationData = {"clientName" : reservation.clientName, "hour" : reservation.reservationStart.hour,
+      "minute" : reservation.reservationStart.minute, "track" : reservation.track.name};
+    let client = new HttpClient();
+    client.fetch('http://localhost:8080/deleteReservation', {
+      'method': "POST",
+      'body': json(reservationData)
+    })
+      .then(response => response.json());
+    window.location.reload();
+  }
+
   reserveClientEstrella() {
     this.reservationEstrella.trackName = 'Estrella';
     let client = new HttpClient();
@@ -46,6 +58,8 @@ export class employeeHome {
       .then(data => {
         if (data.response === "successful") {
           this.message = "Klient ajale registreeritud!";
+        } else {
+          this.message = "Ajale registreerumine ebaõnnestus!";
         }
       });
     document.getElementById("reserveRide").reset();
@@ -62,6 +76,8 @@ export class employeeHome {
       .then(data => {
         if (data.response === "successful") {
           this.message = "Klient ajale registreeritud!";
+        } else {
+          this.message = "Ajale registreerumine ebaõnnestus!";
         }
       });
     document.getElementById("reserveRide").reset();
@@ -91,12 +107,12 @@ export class employeeHome {
 
   setTimeOptions() {
     let currentTime = new Date();
-    if (currentTime.getHours() >= 22) {
+    if (currentTime.getHours() >= 23) {
       this.message = "Tänaseks on radadele registreerimine lõppenud!"
     }
     let startOptionHour = (currentTime.getHours() < 12) ? 12 : currentTime.getHours();
     let startOptionMinutes = this.findNextQuarter(currentTime.getMinutes());
-    for (let hour = startOptionHour; hour <= 21; hour++) {
+    for (let hour = startOptionHour; hour <= 22; hour++) {
       if (hour === startOptionHour) {
         this.setMinutesAndHours(hour, startOptionMinutes);
       } else {

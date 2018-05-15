@@ -30,6 +30,7 @@ export class userHome {
       .then(data => {
         if (data.response === "successful") {
           this.message = "Oled ajale registreeritud!";
+          window.location.reload();
         } else {
           this.message = "Ajale registreerumine ebaõnnestus!";
         }

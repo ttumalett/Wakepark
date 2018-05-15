@@ -36,11 +36,13 @@ public class ReservationService {
         Track track = trackRepository.findByName(trackName);
         if (!reservationRepository.existsByReservationStartAndTrack(rideStart, track)) {
             Reservation reservation = new Reservation();
-            if (request.getString("action").equals("addReservationClient") || !client.contains(" ")) {
+            if (request.getString("action").equals("addReservationClient") || (!client.contains(" ") && userRepository.existsByUsername(client))) {
                 User user = userRepository.findByUsername(client);
                 reservation.setClient(user);
                 reservation.setClientName(user.getFirstName() + " " + user.getLastName());
                 rideCountService.decrementUserRideCount(user);
+            } else if (!client.contains(" ") && !userRepository.existsByUsername(client)) {
+                answer.put("response", "unsuccessful");
             } else {
                 reservation.setClientName(client);
             }
@@ -55,6 +57,29 @@ public class ReservationService {
         return answer.toString();
     }
 
+    public String deleteReservation(String body, RideCountService rideCountService) throws JSONException {
+        JSONObject request = new JSONObject(body);
+        JSONObject answer = new JSONObject();
+        String clientName = request.getString("clientName");
+        Track track = trackRepository.findByName(request.getString("track"));
+        Integer hour = request.getInt("hour");
+        Integer minute = request.getInt("minute");
+        List<Reservation> trackReservations = reservationRepository.findByClientNameAndTrack(clientName, track);
+        LocalDateTime current = LocalDateTime.now();
+        LocalDateTime check =
+                LocalDateTime.of(current.getYear(), current.getMonth(), current.getDayOfMonth(), hour, minute, 0, 0);
+        Reservation reservation = trackReservations.stream().filter(r -> r.getReservationStart().isEqual(check)).findFirst().get();
+        if (reservation.getClient() != null
+                && reservation.getReservationStart().minusMinutes(30).isBefore(LocalDateTime.now())) {
+            rideCountService.incrementUserRideCount(reservation.getClient());
+            answer.put("response", "successful");
+        } else {
+            answer.put("response", "unsuccessful");
+        }
+        reservationRepository.delete(reservation);
+        return answer.toString();
+    }
+
     public LocalDateTime getRideStart(String startTime) {
         LocalDateTime now = LocalDateTime.now();
         int startHour = Integer.valueOf(startTime.split(":")[0]);
@@ -62,7 +87,7 @@ public class ReservationService {
         return LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), startHour, startMinutes, 0, 0);
     }
 
-    Comparator<Reservation> comparator = (left, right) -> {
+    private Comparator<Reservation> comparator = (left, right) -> {
         if (left.getReservationStart().isBefore(right.getReservationStart())) {
             return -1;
         } if (left.getReservationStart().isAfter(right.getReservationStart())) {

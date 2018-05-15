@@ -64,4 +64,10 @@ public class RestApiController {
     public String changeUserPassword(@RequestBody String body) throws JSONException {
         return userService.changeUserPassword(body);
     }
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST, value = "/deleteReservation")
+    public String deleteReservation(@RequestBody String body) throws JSONException {
+        return reservationService.deleteReservation(body, rideCountService);
+    }
 }

@@ -9,7 +9,9 @@
         <div class="track">
           <div class="trackName" style="color: #37baff;">Live Fearless</div>
           <div class="queue">
-            <div repeat.for="ride of liveFearlessReservations" class="rider">${ride.clientName}
+            <div repeat.for="ride of liveFearlessReservations" class="rider">
+              <button click.delegate="deleteReservation(ride)">X</button>
+              ${ride.clientName}
               ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
           </div>
           <div>
@@ -28,7 +30,9 @@
         <div class="track">
           <div class="trackName" style="color: #ff1212;">Estrella</div>
           <div class="queue">
-            <div repeat.for="ride of estrellaReservations" class="rider">${ride.clientName}
+            <div repeat.for="ride of estrellaReservations" class="rider">
+              <button click.delegate="deleteReservation(ride)">X</button>
+              ${ride.clientName}
               ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
           </div>
           <div>
@@ -47,7 +51,9 @@
         <div class="track">
           <div class="trackName" style="color: #000000;">Red Bull</div>
           <div class="queue">
-            <div repeat.for="ride of redBullReservations" class="rider">${ride.clientName}
+            <div repeat.for="ride of redBullReservations" class="rider">
+              <button click.delegate="deleteReservation(ride)">X</button>
+              ${ride.clientName}
               ${ride.reservationStart.hour}:${ride.reservationStart.minute.toString().padStart(2, "0")}</div>
           </div>
           <div>
@@ -61,9 +67,9 @@
               </select>
             </div>
             </form>
-            ${message}
           </div>
         </div>
+        ${message}
       </div>
     </div>
   </div>

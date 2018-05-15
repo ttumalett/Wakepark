@@ -13,4 +13,6 @@ public interface ReservationRepository extends CrudRepository<Reservation, Long>
     boolean existsByReservationStartAndTrack(LocalDateTime localDateTime, Track track);
     List<Reservation> findAll();
     List<Reservation> findByClient(User user);
+    List<Reservation> findByClientNameAndTrack(String clientName, Track track);
+    void delete(Reservation reservation);
 }
